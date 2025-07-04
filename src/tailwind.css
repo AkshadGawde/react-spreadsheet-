@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #D1D5DB;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #9CA3AF;
+}
+
+/* Better font rendering */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* Table styles for spreadsheet */
+.data-table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.data-table td, .data-table th {
+  border-right: 1px solid #E5E7EB;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.data-table td:last-child, .data-table th:last-child {
+  border-right: none;
+}
+
+/* Status pills */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.625rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.status-pill.in-process {
+  background-color: #FFF7ED;
+  color: #C2410C;
+}
+
+.status-pill.need-to-start {
+  background-color: #EFF6FF;
+  color: #2563EB;
+}
+
+.status-pill.complete {
+  background-color: #ECFDF5;
+  color: #059669;
+}
+
+.status-pill.blocked {
+  background-color: #FEF2F2;
+  color: #DC2626;
+}
+
+/* Row and cell dimensions */
+.data-table tr {
+  height: 40px;
+}
+
+.data-table td {
+  height: 40px;
+  padding: 0 0.75rem;
+  box-sizing: border-box;
+}
+
+/* Header styling */
+.data-table th {
+  height: 32px;
+  padding: 0 0.75rem;
+  font-weight: 500;
+  color: #4B5563;
+  background-color: #F9FAFB;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* Cell selection styling */
+td:focus, td:focus-visible {
+  outline: 2px solid #3B82F6;
+  outline-offset: -2px;
+  background-color: rgba(219, 234, 254, 0.4);
+}
+
+/* Priority dots */
+.priority-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 6px;
+  display: inline-block;
+}
+
+.priority-dot.high {
+  background-color: #DC2626;
+}
+
+.priority-dot.medium {
+  background-color: #D97706;
+}
+
+.priority-dot.low {
+  background-color: #2563EB;
+}
+
+/* Action buttons styling */
+.action-btn {
+  padding: 6px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.15s ease;
+}
+
+.action-btn-green {
+  background-color: #ECFDF5;
+  border: 1px solid #D1FAE5;
+  color: #059669;
+}
+
+.action-btn-green:hover {
+  background-color: #D1FAE5;
+}
+
+.action-btn-purple {
+  background-color: #F5F3FF;
+  border: 1px solid #EDE9FE;
+  color: #7C3AED;
+}
+
+.action-btn-purple:hover {
+  background-color: #EDE9FE;
+}
+
+.action-btn-red {
+  background-color: #FEF2F2;
+  border: 1px solid #FEE2E2;
+  color: #DC2626;
+}
+
+.action-btn-red:hover {
+  background-color: #FEE2E2;
+}
+
+/* Active tabs */
+.tab-active {
+  background-color: #EFF6FF;
+  border: 1px solid #DBEAFE;
+  color: #2563EB;
+}
+
+.tab-inactive {
+  color: #6B7280;
+  border: 1px solid transparent;
+}
+
+.tab-inactive:hover {
+  background-color: #F9FAFB;
+}
+
+@layer components {
+  .toolbar-btn {
+    @apply flex items-center px-3 py-1.5 text-sm text-gray-600 hover:bg-gray-200 rounded-lg transition-colors;
+  }
+  
+  .tab-btn {
+    @apply px-4 py-1.5 text-sm rounded-lg transition-colors;
+  }
+}
