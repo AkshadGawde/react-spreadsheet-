@@ -99,7 +99,7 @@ const Toolbar: React.FC = () => {
       <div className="flex items-center space-x-3">
         <button 
           onClick={handleImport}
-          className="flex items-center px-3 py-1.5 bg-white border border-gray-300 rounded text-sm font-medium text-gray-700 hover:bg-gray-50"
+          className="flex items-center px-3 py-1.5 bg-white border border-gray-300 rounded text-lg font-medium text-gray-700 hover:bg-gray-50"
         >
           <svg className="mr-2 w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />

@@ -62,7 +62,7 @@ const Header: React.FC = () => {
             <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-5-5V6a6 6 0 00-12 0v6l-5 5h5m7 0v1a3 3 0 01-6 0v-1m6 0H9" />
             </svg>
-            <span className="absolute -top-1 -right-1 h-4 w-4 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">
+            <span className="absolute -top-1 -right-1 h-4 w-4 bg-green-800 text-white text-xs rounded-full flex items-center justify-center">
               2
             </span>
           </button>
@@ -72,10 +72,11 @@ const Header: React.FC = () => {
         <div className="flex items-center space-x-2">
           <button 
             onClick={handleProfileClick}
-            className="h-8 w-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm font-medium hover:bg-blue-600"
+            className="h-8 w-8 rounded-full flex items-center justify-center text-white text-sm font-medium"
           >
             JD
           </button>
+          
           <span className="text-sm text-gray-700 hidden sm:block">John Doe</span>
         </div>
       </div>

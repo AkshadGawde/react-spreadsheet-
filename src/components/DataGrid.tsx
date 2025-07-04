@@ -107,11 +107,25 @@ const DataGrid: React.FC = () => {
                   Extract ...
                 </span>
               </th>
+              <th colSpan={1} className="bg-[#E3E5E8] border border-[#E3E5E8] px-3 py-2 text-center text-xs font-semibold text-[#4C2B2B] tracking-wide" style={{ minWidth: '120px' }}>
+                <span className="inline-flex items-center">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M9.79153 2.5C10.1079 2.5 10.3695 2.73501 10.4109 3.04007L10.4167 3.12487L10.4177 9.16667H16.4619C16.8071 9.16667 17.0869 9.44649 17.0869 9.79167C17.0869 10.1081 16.8518 10.3696 16.5467 10.411L16.4619 10.4167H10.4177L10.4194 16.4576C10.4194 16.8028 10.1397 17.0827 9.7945 17.0827C9.47808 17.0827 9.21654 16.8477 9.17509 16.5427L9.16937 16.4578L9.16766 10.4167H3.12683C2.78165 10.4167 2.50183 10.1368 2.50183 9.79167C2.50183 9.47525 2.73696 9.21376 3.04202 9.17237L3.12683 9.16667H9.16766L9.16666 3.12513C9.16659 2.77995 9.44635 2.5 9.79153 2.5Z" fill="#04071E"/>
+</svg>
+
+                </span>
+              </th>
             </tr>
+            
             {/* Column header row */}
             <tr>
               <th className="bg-[#F7F8FA] border border-[#E3E5E8] px-3 py-2 text-xs font-bold text-[#3B3F4C]">#</th>
-              <th className="bg-[#F7F8FA] border border-[#E3E5E8] px-3 py-2 text-xs font-bold text-[#3B3F4C]">Job Request</th>
+              <th className="bg-[#F7F8FA] border border-[#E3E5E8] px-3 py-2 text-xs font-bold text-[#3B3F4C] text-left">
+                <span className="flex items-center">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-1"><path d="M8 1.33331C4.324 1.33331 1.33334 4.324 1.33334 7.99998C1.33334 11.676 4.324 14.6666 8 14.6666C11.676 14.6666 14.6667 11.676 14.6667 7.99998C14.6667 4.324 11.676 1.33331 8 1.33331ZM8 13.3333C5.05467 13.3333 2.66668 10.9453 2.66668 7.99998C2.66668 5.05465 5.05467 2.66665 8 2.66665C10.9453 2.66665 13.3333 5.05465 13.3333 7.99998C13.3333 10.9453 10.9453 13.3333 8 13.3333ZM8.66668 4.66665H7.33334V8.66665L10.472 10.472L11.1387 9.36131L8.66668 7.97265V4.66665Z" fill="#1A8CFF"/></svg>
+                  Job Request
+                </span>
+              </th>
               <th className="bg-[#F7F8FA] border border-[#E3E5E8] px-3 py-2 text-xs font-bold text-[#3B3F4C]">Submitted</th>
               <th className="bg-[#F7F8FA] border border-[#E3E5E8] px-3 py-2 text-xs font-bold text-[#3B3F4C]">Status</th>
               <th className="bg-[#F7F8FA] border border-[#E3E5E8] px-3 py-2 text-xs font-bold text-[#3B3F4C]">Submitter</th>
@@ -120,6 +134,7 @@ const DataGrid: React.FC = () => {
               <th className="bg-[#EAE6F7] border border-[#E3E5E8] px-3 py-2 text-xs font-bold text-[#3B2F4C]">Priority</th>
               <th className="bg-[#EAE6F7] border border-[#E3E5E8] px-3 py-2 text-xs font-bold text-[#3B2F4C]">Due Date</th>
               <th className="bg-[#F7EAE6] border border-[#E3E5E8] px-3 py-2 text-xs font-bold text-[#4C2B2B]">Est. Value</th>
+              <th className="bg-[#ffffff] border border-[#E3E5E8] px-3 py-2 text-xs font-bold text-[#4C2B2B]"></th>
             </tr>
           </thead>
           
@@ -271,6 +286,17 @@ const DataGrid: React.FC = () => {
                 >
                   {row.estValue}
                 </td>
+                <td 
+                  className={`border border-gray-200 px-3 py-2 text-sm text-gray-900 ${
+                    selectedCell?.row === rowIndex && selectedCell?.column === 9 
+                      ? 'bg-blue-100 ring-2 ring-blue-500' 
+                      : ''
+                  }`}
+                  onClick={() => handleCellClick(rowIndex, 9)}
+                  onDoubleClick={() => handleCellDoubleClick(rowIndex, 9)}
+                >
+                </td>
+                
               </tr>
             ))}
             
@@ -291,6 +317,10 @@ const DataGrid: React.FC = () => {
                     {colIndex === 0 ? data.length + index + 1 : ''}
                   </td>
                 ))}
+                {/* Extra empty cell for '+' column */}
+                <td
+                  className="border border-gray-200 px-3 py-2 h-10"
+                ></td>
               </tr>
             ))}
           </tbody>
