@@ -35,54 +35,72 @@ const TabBar: React.FC = () => {
   };
 
   return (
-    <div className="border-b border-gray-200 bg-white">
-      <div className="flex items-center px-4 py-2">
-        {/* Main spreadsheet tab - active */}
-        <button 
-          onClick={() => handleTabClick('q3-financial')}
-          className={`px-4 py-2 rounded-t-lg text-sm font-medium mr-2 border-t border-l border-r ${
-            tabs.find(t => t.id === 'q3-financial')?.isActive 
-              ? 'bg-blue-50 text-blue-800 border-blue-200 -mb-px' 
-              : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-          }`}
-        >
-          <span className="inline-block w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
-          Q3 Financial Overview
-        </button>
+    <div className="flex items-center w-full px-4 py-2 bg-white border-b border-gray-200 gap-2">
+      <span className="text-sm text-gray-700 font-medium mr-2">Tool bar</span>
+      <span className="text-gray-400 mx-1">»</span>
+      <button
+        className="flex items-center px-3 py-1.5 rounded text-xs font-medium text-gray-700 hover:bg-gray-100 border border-transparent focus:outline-none focus:ring-2 focus:ring-blue-200"
+        onClick={() => console.log('Hide fields clicked')}
+      >
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-1"><path d="M1.84972 1.84973C1.62783 2.07162 1.60766 2.41884 1.7892 2.66351L1.84972 2.73361L5.21186 6.09575C3.6102 7.22031 2.41314 8.89994 1.91573 10.887C1.83191 11.2218 2.03541 11.5612 2.37025 11.6451C2.7051 11.7289 3.0445 11.5254 3.12832 11.1905C3.56955 9.4279 4.65926 7.94956 6.1118 6.99544L7.61982 8.50355C7.03023 9.10483 6.66666 9.92855 6.66666 10.8372C6.66666 12.6781 8.15905 14.1705 9.99999 14.1705C10.9086 14.1705 11.7324 13.807 12.3336 13.2174L17.2664 18.1503C17.5105 18.3944 17.9062 18.3944 18.1503 18.1503C18.3722 17.9284 18.3923 17.5812 18.2108 17.3365L18.1503 17.2664L13.0557 12.1712L13.0567 12.17L12.0566 11.1718L9.66497 8.78065L9.66666 8.78001L7.26564 6.38152L7.26666 6.38001L6.32226 5.43791L2.7336 1.84973C2.48953 1.60565 2.0938 1.60565 1.84972 1.84973ZM8.50339 9.3879L11.4493 12.3338C11.0743 12.697 10.5633 12.9205 9.99999 12.9205C8.8494 12.9205 7.91666 11.9878 7.91666 10.8372C7.91666 10.2739 8.14019 9.76288 8.50339 9.3879ZM9.99999 4.58334C9.16644 4.58334 8.35761 4.70673 7.59257 4.9375L8.62338 5.96766C9.06988 5.87944 9.53033 5.83334 9.99999 5.83334C13.2692 5.83334 16.0916 8.06689 16.8726 11.1943C16.9562 11.5292 17.2955 11.7329 17.6304 11.6492C17.9653 11.5656 18.169 11.2263 18.0854 10.8914C17.1661 7.2106 13.8463 4.58334 9.99999 4.58334ZM10.1622 7.50774L13.33 10.675C13.2452 8.9609 11.8727 7.58971 10.1622 7.50774Z" fill="#121212"/></svg>
+        Hide fields
+      </button>
+      <button
+        className="flex items-center px-3 py-1.5 rounded text-xs font-medium text-gray-700 hover:bg-gray-100 border border-transparent focus:outline-none focus:ring-2 focus:ring-blue-200"
+        onClick={() => console.log('Sort clicked')}
+      >
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-1"><path d="M14.3757 3.33333L14.2909 3.33903C13.9858 3.38042 13.7507 3.64192 13.7507 3.95833L13.75 14.535L11.0668 11.8537L10.9966 11.7932C10.7519 11.6117 10.4047 11.632 10.1829 11.854C9.9389 12.0982 9.93906 12.4939 10.1832 12.7379L13.9364 16.4879L14.0065 16.5484C14.2513 16.7298 14.5985 16.7095 14.8203 16.4875L18.5671 12.7375L18.6276 12.6674C18.8091 12.4227 18.7887 12.0755 18.5668 11.8537L18.4966 11.7932C18.2519 11.6117 17.9047 11.632 17.6829 11.854L15 14.5383L15.0007 3.95833L14.995 3.87352C14.9536 3.56846 14.6921 3.33333 14.3757 3.33333ZM5.17868 3.5164L1.43304 7.26228L1.37253 7.33238C1.19099 7.57706 1.21118 7.92428 1.43307 8.14616L1.50317 8.20668C1.74786 8.38821 2.09507 8.36803 2.31696 8.14613L4.9975 5.46425L4.99805 16.0458L5.00376 16.1306C5.04514 16.4357 5.30664 16.6708 5.62305 16.6708L5.70786 16.6651C6.01292 16.6237 6.24805 16.3622 6.24805 16.0458L6.2475 5.46592L8.93322 8.14663L9.00338 8.20707C9.24826 8.38835 9.59545 8.3678 9.8171 8.14567C10.0609 7.90132 10.0605 7.5056 9.81614 7.26178L6.06209 3.51591L5.99198 3.45551C5.7473 3.27433 5.40039 3.29467 5.17868 3.5164Z" fill="#121212"/></svg>
+        Sort
+      </button>
+      <button
+        className="flex items-center px-3 py-1.5 rounded text-xs font-medium text-gray-700 hover:bg-gray-100 border border-transparent focus:outline-none focus:ring-2 focus:ring-blue-200"
+        onClick={() => console.log('Filter clicked')}
+      >
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-1"><path d="M11.25 13.3333C11.5952 13.3333 11.875 13.6132 11.875 13.9583C11.875 14.3035 11.5952 14.5833 11.25 14.5833H8.75C8.40482 14.5833 8.125 14.3035 8.125 13.9583C8.125 13.6132 8.40482 13.3333 8.75 13.3333H11.25ZM13.75 9.16667C14.0952 9.16667 14.375 9.44649 14.375 9.79167C14.375 10.1368 14.0952 10.4167 13.75 10.4167H6.25C5.90482 10.4167 5.625 10.1368 5.625 9.79167C5.625 9.44649 5.90482 9.16667 6.25 9.16667H13.75ZM16.25 5C16.5952 5 16.875 5.27982 16.875 5.625C16.875 5.97018 16.5952 6.25 16.25 6.25H3.75C3.40482 6.25 3.125 5.97018 3.125 5.625C3.125 5.27982 3.40482 5 3.75 5H16.25Z" fill="#121212"/></svg>
+        Filter
+      </button>
+      <button
+        className="flex items-center px-3 py-1.5 rounded text-xs font-medium text-gray-700 hover:bg-gray-100 border border-transparent focus:outline-none focus:ring-2 focus:ring-blue-200"
+        onClick={() => console.log('Cell view clicked')}
+      >
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-1"><path d="M11.0164 5.65096C10.7945 5.42907 10.7743 5.08185 10.9559 4.83717L11.0164 4.76708L12.9892 2.79199C13.094 2.61834 13.3024 2.5 13.5424 2.5C13.7525 2.5 13.9383 2.59072 14.0516 2.72982L14.0956 2.79227L16.0683 4.76708L16.1288 4.83717C16.2902 5.05466 16.2922 5.35318 16.1348 5.57267L16.0683 5.65096L15.9982 5.71147C15.7807 5.87285 15.4822 5.87484 15.2627 5.71745L15.1844 5.65096L14.1666 4.63333V7.78653L14.1609 7.86073C14.1195 8.12766 13.858 8.33333 13.5416 8.33333C13.2252 8.33333 12.9637 8.12754 12.9223 7.8606L12.9166 7.78639V4.63333L11.9003 5.65096L11.8302 5.71147C11.5855 5.89302 11.2383 5.87285 11.0164 5.65096ZM11.0188 14.349C11.2407 14.1272 11.5879 14.107 11.8326 14.2885L11.9027 14.349L12.9191 15.3667V12.2136C12.919 11.9116 13.1988 11.6667 13.544 11.6667C13.8604 11.6667 14.1219 11.8723 14.1634 12.1393L14.1691 12.2135V15.3667L15.1868 14.349C15.4087 14.1272 15.7559 14.107 16.0006 14.2885L16.0707 14.349C16.2926 14.5709 16.3128 14.9181 16.1312 15.1628L16.0707 15.2329L14.098 17.2077C13.9934 17.3815 13.7849 17.5 13.5448 17.5C13.3048 17.5 13.0964 17.3817 12.9917 17.208L11.0188 15.2329C10.7747 14.9888 10.7747 14.5931 11.0188 14.349ZM5.20831 3.32682C4.17278 3.32682 3.33331 4.16629 3.33331 5.20182V14.7852C3.33331 15.8207 4.17278 16.6602 5.20831 16.6602H8.54165C8.88682 16.6602 9.16665 16.3803 9.16665 16.0352C9.16665 15.69 8.88682 15.4102 8.54165 15.4102H5.20831C4.86313 15.4102 4.58331 15.1303 4.58331 14.7852V5.20182C4.58331 4.85664 4.86314 4.57682 5.20831 4.57682H8.54165C8.88682 4.57682 9.16665 4.297 9.16665 3.95182C9.16665 3.60664 8.88682 3.32682 8.54165 3.32682H5.20831Z" fill="#121212"/></svg>
+        Cell view
+      </button>
+      <div className="flex-1"></div>
+      <button
+        className="flex items-center px-3 py-1.5 rounded text-xs font-medium text-gray-700 hover:bg-gray-100 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200"
+        onClick={() => console.log('Import clicked')}
+      >
+        <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 16 16"><path d="M8 3v7M8 10l-3-3m3 3l3-3" stroke="#4B5563" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><rect x="3" y="13" width="10" height="2" rx="1" fill="#4B5563"/></svg>
+        Import
+      </button>
+      <button
+        className="flex items-center px-3 py-1.5 rounded text-xs font-medium text-gray-700 hover:bg-gray-100 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200"
+        onClick={() => console.log('Export clicked')}
+      >
+        <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 16 16"><path d="M8 13V6M8 6l-3 3m3-3l3 3" stroke="#4B5563" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><rect x="3" y="1" width="10" height="2" rx="1" fill="#4B5563"/></svg>
+        Export
+      </button>
+      <button
+        className="flex items-center px-3 py-1.5 rounded text-xs font-medium text-gray-700 hover:bg-gray-100 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200"
+        onClick={() => console.log('Share clicked')}
+      >
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.62231 3.33333H8.50915C8.85433 3.33333 9.13415 3.61315 9.13415 3.95833C9.13415 4.27474 8.89902 4.53624 8.59396 4.57762L8.50915 4.58333H5.62231C4.62993 4.58333 3.81761 5.3543 3.75164 6.32995L3.74731 6.45833V14.375C3.74731 15.3674 4.51828 16.1797 5.49394 16.2457L5.62231 16.25H13.5396C14.532 16.25 15.3443 15.479 15.4103 14.5034L15.4146 14.375V13.9602C15.4146 13.615 15.6944 13.3352 16.0396 13.3352C16.356 13.3352 16.6175 13.5703 16.6589 13.8754L16.6646 13.9602V14.375C16.6646 16.0452 15.3543 17.4094 13.7056 17.4957L13.5396 17.5H5.62231C3.9521 17.5 2.58792 16.1897 2.50165 14.541L2.49731 14.375V6.45833C2.49731 4.78811 3.80762 3.42393 5.45635 3.33766L5.62231 3.33333H8.50915H5.62231ZM12.084 5.43321V3.12499C12.084 2.60502 12.673 2.32495 13.0731 2.6165L13.1416 2.67395L18.1371 7.46561C18.3703 7.68923 18.3915 8.04842 18.2008 8.29672L18.1372 8.36764L13.1417 13.1608C12.7665 13.5209 12.1565 13.2897 12.0899 12.7991L12.084 12.7099V10.4388L11.7977 10.4639C9.79799 10.6725 7.88129 11.5732 6.0356 13.1811C5.60301 13.558 4.93374 13.2017 5.00488 12.6324C5.55888 8.19941 7.8771 5.75607 11.8345 5.44958L12.084 5.43321V3.12499V5.43321ZM13.334 4.59053V6.04166C13.334 6.38684 13.0542 6.66666 12.709 6.66666C9.48114 6.66666 7.48062 8.06344 6.61625 10.9643L6.55037 11.1965L6.84386 10.9991C8.7076 9.78099 10.6654 9.16666 12.709 9.16666C13.0254 9.16666 13.2869 9.40179 13.3283 9.70685L13.334 9.79166V11.244L16.8017 7.91673L13.334 4.59053Z" fill="#545454"/>
+</svg>
 
-        {/* Action buttons row - these are the colored tabs */}
-        <div className="flex items-center space-x-2 ml-4">
-          <button 
-            onClick={() => handleTabClick('abc')}
-            className={`px-3 py-1.5 rounded text-sm font-medium ${getTabColor('green', tabs.find(t => t.id === 'abc')?.isActive)}`}
-          >
-            ABC
-          </button>
-          
-          <button 
-            onClick={() => handleTabClick('answer-question')}
-            className={`px-3 py-1.5 rounded text-sm font-medium ${getTabColor('purple', tabs.find(t => t.id === 'answer-question')?.isActive)}`}
-          >
-            Answer a question
-          </button>
-          
-          <button 
-            onClick={() => handleTabClick('extract')}
-            className={`px-3 py-1.5 rounded text-sm font-medium ${getTabColor('orange', tabs.find(t => t.id === 'extract')?.isActive)}`}
-          >
-            Extract
-          </button>
+        Share
+      </button>
+      <button
+        className="flex items-center px-4 py-1.5 rounded text-xs font-semibold text-white bg-green-700 hover:bg-green-800 border border-green-800 focus:outline-none focus:ring-2 focus:ring-green-200 ml-2"
+        onClick={() => console.log('New Action clicked')}
+      >
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M10.0001 2.5C10.3452 2.5 10.6251 2.77982 10.6251 3.125V7.91667H12.7046C13.9702 7.91667 14.9963 8.94268 14.9963 10.2083V15.368L16.4334 13.9328C16.6777 13.6888 17.0734 13.6891 17.3173 13.9334C17.5612 14.1776 17.5609 14.5733 17.3167 14.8172L14.8129 17.3177C14.5688 17.5615 14.1733 17.5613 13.9293 17.3174L11.4289 14.8169C11.1848 14.5729 11.1848 14.1771 11.4289 13.9331C11.673 13.689 12.0687 13.689 12.3128 13.9331L13.7463 15.3665V10.2083C13.7463 9.63304 13.2799 9.16667 12.7046 9.16667H7.29165C6.71635 9.16667 6.24998 9.63304 6.24998 10.2083V15.3665L7.68346 13.9331C7.92754 13.689 8.32327 13.689 8.56734 13.9331C8.81142 14.1771 8.81142 14.5729 8.56734 14.8169L6.06692 17.3174C5.82285 17.5614 5.42712 17.5614 5.18304 17.3174L2.68257 14.8169C2.43849 14.5729 2.43849 14.1771 2.68257 13.9331C2.92664 13.689 3.32237 13.689 3.56645 13.9331L4.99998 15.3666V10.2083C4.99998 8.94268 6.026 7.91667 7.29165 7.91667H9.37506V3.125C9.37506 2.77982 9.65488 2.5 10.0001 2.5Z" fill="white"/>
+</svg>
 
-          <button 
-            onClick={handleAddTab}
-            className="w-8 h-8 rounded bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-600"
-          >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-            </svg>
-          </button>
-        </div>
-      </div>
+        New Action
+      </button>
     </div>
   );
 };

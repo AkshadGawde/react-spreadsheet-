@@ -3,6 +3,7 @@ import Header from './Header';
 import TabBar from './TabBar';
 import DataGrid from './DataGrid';
 
+
 const SpreadsheetView: React.FC = () => {
   return (
     <div className="flex flex-col h-screen bg-white">
