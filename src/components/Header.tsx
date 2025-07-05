@@ -70,15 +70,25 @@ const Header: React.FC = () => {
         
         {/* User profile */}
         <div className="flex items-center space-x-2">
-          <button 
-            onClick={handleProfileClick}
-            className="h-8 w-8 rounded-full flex items-center justify-center text-white text-sm font-medium"
-          >
-            JD
-          </button>
-          
-          <span className="text-sm text-gray-700 hidden sm:block">John Doe</span>
-        </div>
+  <button 
+    onClick={handleProfileClick}
+    className="h-8 w-8 rounded-full flex items-center justify-center text-white text-sm font-medium"
+  >
+    <img
+        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face&auto=format&q=80"
+        alt="John Doe Profile"
+        className="w-8 h-8 rounded-full mr-2 object-cover"
+      />
+    JD
+  </button>
+
+  <div className="flex flex-col hidden sm:flex">
+    <span className="flex items-center text-sm text-gray-700">
+      John Doe
+    </span>
+    <p className="text-xs text-right text-gray-500">john.doe...</p>
+  </div>
+</div>
       </div>
     </header>
   );
