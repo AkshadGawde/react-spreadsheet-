@@ -70,25 +70,32 @@ const Header: React.FC = () => {
         
         {/* User profile */}
         <div className="flex items-center space-x-2">
-  <button 
-    onClick={handleProfileClick}
-    className="h-8 w-8 rounded-full flex items-center justify-center text-white text-sm font-medium"
-  >
-    <img
-        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face&auto=format&q=80"
-        alt="John Doe Profile"
-        className="w-8 h-8 rounded-full mr-2 object-cover"
-      />
-    JD
-  </button>
-
-  <div className="flex flex-col hidden sm:flex">
-    <span className="flex items-center text-sm text-gray-700">
-      John Doe
-    </span>
-    <p className="text-xs text-right text-gray-500">john.doe...</p>
-  </div>
-</div>
+          <button 
+            onClick={handleProfileClick}
+            className="flex items-center space-x-2"
+          >
+            {/* Profile SVG Image */}
+            <svg
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="rounded-full"
+            >
+              <circle cx="16" cy="16" r="16" fill="#E5E7EB"/>
+              <circle cx="16" cy="12" r="4" fill="#9CA3AF"/>
+              <path d="M8 26c0-4.418 3.582-8 8-8s8 3.582 8 8" fill="#9CA3AF"/>
+            </svg>
+            
+            <div className="hidden sm:flex flex-col">
+              <span className="text-sm text-gray-700">
+                John Doe
+              </span>
+              <p className="text-xs text-gray-500">john.doe...</p>
+            </div>
+          </button>
+        </div>
       </div>
     </header>
   );
