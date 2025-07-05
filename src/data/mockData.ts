@@ -3,7 +3,7 @@ import { SpreadsheetRow, Tab, BottomTab } from '../types';
 export const sampleData: SpreadsheetRow[] = [
   {
     id: 1,
-    jobRequest: 'Launch social media campaign for product',
+    jobRequest: 'Launch social media campaign for pro...',
     submitted: '15-11-2024',
     status: 'In-process',
     submitter: 'Alisha Patel',
