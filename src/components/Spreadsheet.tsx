@@ -293,6 +293,7 @@ const Spreadsheet: React.FC = () => {
               >
                 {row.jobRequest}
               </td>
+              
               <td 
                 className={`py-2 px-3 text-sm text-gray-600 border-r border-gray-200 ${selectedCell?.row === row.id && selectedCell?.col === 2 ? 'bg-blue-200' : ''}`}
                 onClick={() => handleCellClick(row.id, 2)}
