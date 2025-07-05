@@ -4,15 +4,10 @@
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
-    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-
-    /* Changed to node for moduleResolution */
-    "moduleResolution": "node",
-
-    /* Removed unrecognized option */
-    "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
@@ -29,12 +24,6 @@
       "@/*": ["src/*"]
     }
   },
-  "include": [
-  "src",
-  "vite.config.ts",
-  "postcss.config.js",
-  "tailwind.config.js"
-],
-
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
 }

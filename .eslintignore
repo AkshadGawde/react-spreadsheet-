@@ -1,5 +1,5 @@
-dist/
-build/
-node_modules/
-*.js
-*.map
+# .eslintignore
+node_modules
+dist
+build
+.eslintignore

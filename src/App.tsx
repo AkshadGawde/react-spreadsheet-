@@ -1,6 +1,5 @@
-import React from 'react';
-import SpreadsheetView from './components/SpreadsheetView';
-import './App.css';
+import SpreadsheetView from "./components/SpreadsheetView";
+import "./App.css";
 
 function App() {
   return (

@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 const Footer: React.FC = () => {
   const tabs = [
-    { label: 'All Orders', active: true },
-    { label: 'Pending', active: false },
-    { label: 'Reviewed', active: false },
-    { label: 'Arrived', active: false },
+    { label: "All Orders", active: true },
+    { label: "Pending", active: false },
+    { label: "Reviewed", active: false },
+    { label: "Arrived", active: false },
   ];
 
   return (
@@ -15,10 +15,15 @@ const Footer: React.FC = () => {
             key={tab.label}
             className={`px-4 py-2 text-sm font-semibold rounded-t-md focus:outline-none transition-colors duration-150 ${
               tab.active
-                ? 'bg-[#E6F0EA] text-green-900 border-b-2 border-green-700 shadow-sm'
-                : 'bg-transparent text-gray-500 hover:bg-gray-100'
+                ? "bg-[#E6F0EA] text-green-900 border-b-2 border-green-700 shadow-sm"
+                : "bg-transparent text-gray-500 hover:bg-gray-100"
             }`}
-            style={{ borderBottom: tab.active ? '3px solid #355C3A' : '3px solid transparent', marginRight: idx === tabs.length - 1 ? '0.5rem' : '0' }}
+            style={{
+              borderBottom: tab.active
+                ? "3px solid #355C3A"
+                : "3px solid transparent",
+              marginRight: idx === tabs.length - 1 ? "0.5rem" : "0",
+            }}
             onClick={() => console.log(`${tab.label} tab clicked`)}
           >
             {tab.label}
@@ -26,7 +31,7 @@ const Footer: React.FC = () => {
         ))}
         <button
           className="w-7 h-7 flex items-center justify-center rounded-full text-gray-400 hover:bg-gray-100 text-xl text-center"
-          onClick={() => console.log('Add tab clicked')}
+          onClick={() => console.log("Add tab clicked")}
         >
           <span className="text-2xl leading-none">+</span>
         </button>
