@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { SpreadsheetRow, SelectedCell } from '../types';
 import { sampleData } from '../data/mockData';
 
@@ -6,6 +6,50 @@ const DataGrid: React.FC = () => {
   const [data] = useState<SpreadsheetRow[]>(sampleData);
   const [selectedCell, setSelectedCell] = useState<SelectedCell | null>(null);
   const [editingCell, setEditingCell] = useState<SelectedCell | null>(null);
+
+  // --- ARROW KEYBOARD NAVIGATION LOGIC (NO UI CHANGE) ---
+  const columns = [
+    { key: 'index', label: '#', width: '60px' },
+    { key: 'jobRequest', label: 'Job Request', width: '300px' },
+    { key: 'submitted', label: 'Submitted', width: '120px' },
+    { key: 'status', label: 'Status', width: '120px' },
+    { key: 'submitter', label: 'Submitter', width: '140px' },
+    { key: 'url', label: 'URL', width: '160px' },
+    { key: 'assigned', label: 'Assigned', width: '140px' },
+    { key: 'priority', label: 'Priority', width: '100px' },
+    { key: 'dueDate', label: 'Due Date', width: '120px' },
+    { key: 'estValue', label: 'Est. Value', width: '120px' },
+  ];
+  const totalRows = data.length + 20;
+  const totalCols = columns.length;
+  const cellRefs = useRef<(HTMLTableCellElement | null)[][]>([]);
+  useEffect(() => {
+    cellRefs.current = Array.from({ length: totalRows }, () => Array(totalCols).fill(null));
+  }, [data.length]);
+  useEffect(() => {
+    if (selectedCell) {
+      const cell = cellRefs.current[selectedCell.row]?.[selectedCell.column];
+      if (cell) {
+        cell.focus({ preventScroll: true });
+        cell.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+      }
+    }
+  }, [selectedCell]);
+  const handleGridKeyDown = useCallback(
+    (e: React.KeyboardEvent<HTMLDivElement>) => {
+      if (!selectedCell) return;
+      let { row, column } = selectedCell;
+      if (e.key === 'ArrowDown') row = Math.min(row + 1, totalRows - 1);
+      else if (e.key === 'ArrowUp') row = Math.max(row - 1, 0);
+      else if (e.key === 'ArrowRight') column = Math.min(column + 1, totalCols - 1);
+      else if (e.key === 'ArrowLeft') column = Math.max(column - 1, 0);
+      else return;
+      e.preventDefault();
+      setSelectedCell({ row, column });
+    },
+    [selectedCell, totalRows, totalCols]
+  );
+  // --- END ARROW KEYBOARD NAVIGATION LOGIC ---
 
   const handleCellClick = useCallback((row: number, column: number) => {
     setSelectedCell({ row, column });
@@ -57,21 +101,13 @@ const DataGrid: React.FC = () => {
     console.log(`URL clicked: ${url}`);
   };
 
-  const columns = [
-    { key: 'index', label: '#', width: '60px' },
-    { key: 'jobRequest', label: 'Job Request', width: '300px' },
-    { key: 'submitted', label: 'Submitted', width: '120px' },
-    { key: 'status', label: 'Status', width: '120px' },
-    { key: 'submitter', label: 'Submitter', width: '140px' },
-    { key: 'url', label: 'URL', width: '160px' },
-    { key: 'assigned', label: 'Assigned', width: '140px' },
-    { key: 'priority', label: 'Priority', width: '100px' },
-    { key: 'dueDate', label: 'Due Date', width: '120px' },
-    { key: 'estValue', label: 'Est. Value', width: '120px' },
-  ];
-
   return (
-    <div className="flex flex-col h-full bg-white">
+    <div
+      className="flex flex-col h-full bg-white"
+      tabIndex={0}
+      onKeyDown={handleGridKeyDown}
+      style={{ outline: 'none' }}
+    >
       {/* Spreadsheet container */}
       <div className="flex-1 overflow-auto">
         <table className="w-full">
@@ -189,7 +225,7 @@ const DataGrid: React.FC = () => {
           style={{ mixBlendMode: "hue" }}
         />
         <path
-          d="M14 5.66667V11.8333C14 13.03 13.03 14 11.8333 14H4.16667C2.97005 14 2 13.03 2 11.8333V5.66667H14Z"
+          d="M14 5.66667V11.8333C14 13.03 13.03 14 11.8333 14H4.16667C2.97005 14 2 13.03 2 11.8333V5.66667H14ZM4.83333 10C4.3731 10 4 10.3731 4 10.8333C4 11.2936 4.3731 11.6667 4.83333 11.6667C5.29357 11.6667 5.66667 11.2936 5.66667 10.8333C5.66667 10.3731 5.29357 10 4.83333 10ZM8 10C7.53976 10 7.16667 10.3731 7.16667 10.8333C7.16667 11.2936 7.53976 11.6667 8 11.6667C8.46024 11.6667 8.83333 11.2936 8.83333 10.8333C8.83333 10.3731 8.46024 10 8 10ZM4.83333 7C4.3731 7 4 7.3731 4 7.83333C4 8.29357 4.3731 8.66667 4.83333 8.66667C5.29357 8.66667 5.66667 8.29357 5.66667 7.83333C5.66667 7.3731 5.29357 7 4.83333 7ZM8 7C7.53976 7 7.16667 7.3731 7.16667 7.83333C7.16667 8.29357 7.53976 8.66667 8 8.66667C8.46024 8.66667 8.83333 8.29357 8.83333 7.83333C8.83333 7.3731 8.46024 7 8 7ZM11.1667 7C10.7064 7 10.3333 7.3731 10.3333 7.83333C10.3333 8.29357 10.7064 8.66667 11.1667 8.66667C11.6269 8.66667 12 8.29357 12 7.83333C12 7.3731 11.6269 7 11.1667 7ZM11.8333 2C13.03 2 14 2.97005 14 4.16667V4.66667H2V4.16667C2 2.97005 2.97005 2 4.16667 2H11.8333Z"
           fill="white"
           fillOpacity="0.16"
         />
@@ -298,44 +334,31 @@ const DataGrid: React.FC = () => {
         fill="#AFAFAF"
       />
       <path
-        d="M5.93615 11.0006H10.0638C9.65051 13.1815 8.82291 14.666 7.99998 14.666C7.20198 14.666 6.39959 13.2701 5.97485 11.1969L5.93615 11.0006H10.0638H5.93615Z"
-        fill="black"
-        fillOpacity="0.7"
-        style={{ mixBlendMode: 'hue' }}
+        d="M5.93615 11.0006H10.0638C9.65051 13.1815 8.82291 14.666 7.99998 14.666C7.20198 14.666 6.39959 13.2701 5.97485 11.1969L5.93615 11.0006H10.0638H5.93615ZM2.04385 11.0007L4.91427 11.0005C5.15745 12.3887 5.56964 13.5697 6.10906 14.3962C4.40051 13.8916 2.97807 12.7217 2.14141 11.1866L2.04385 11.0007ZM11.0857 11.0005L13.9561 11.0007C13.1352 12.6271 11.6678 13.8714 9.89157 14.3959C10.3946 13.6242 10.7871 12.5442 11.0348 11.2753L11.0857 11.0005L13.9561 11.0007L11.0857 11.0005ZM11.2876 6.66723L14.5343 6.66682C14.6218 7.0977 14.6677 7.54366 14.6677 8.00035C14.6677 8.69723 14.5608 9.36914 14.3625 10.0006H11.2274C11.2976 9.36221 11.3343 8.69149 11.3343 8.00035C11.3343 7.69747 11.3273 7.39851 11.3134 7.10447L11.2876 6.66723L14.5343 6.66682L11.2876 6.66723ZM1.46565 6.66682L4.71233 6.66723C4.6815 7.10053 4.66561 7.54603 4.66561 8.00035C4.66561 8.55326 4.68915 9.0931 4.73451 9.61379L4.77259 10.0006H1.6375C1.43919 9.36914 1.33228 8.69723 1.33228 8.00035C1.33228 7.54366 1.37819 7.0977 1.46565 6.66682ZM5.71697 6.66685H10.283C10.3165 7.09727 10.3343 7.54317 10.3343 8.00035C10.3343 8.55878 10.3077 9.10037 10.2584 9.6175L10.2173 10.0006H5.78261C5.70725 9.37011 5.66561 8.69839 5.66561 8.00035C5.66561 7.65746 5.67566 7.32093 5.69481 6.9925L5.71697 6.66685H10.283H5.71697ZM9.96282 1.71806L9.8909 1.60458C11.9031 2.19856 13.5191 3.7163 14.2479 5.66679L11.1873 5.66699C10.977 4.05571 10.5497 2.67192 9.96282 1.71806L9.8909 1.60458L9.96282 1.71806ZM6.02782 1.62912L6.10901 1.6046C5.52184 2.50428 5.08543 3.82402 4.85366 5.37376L4.81262 5.66699L1.75203 5.66679C2.471 3.74262 4.0534 2.23959 6.02782 1.62912L6.10901 1.6046L6.02782 1.62912ZM7.99998 1.33466C8.87917 1.33466 9.7637 3.02916 10.1426 5.45695L10.1739 5.66682H5.8261C6.1857 3.12737 7.09566 1.33466 7.99998 1.33466Z"
+        fill="#AFAFAF"
       />
       <path
-        d="M5.93615 11.0006H10.0638C9.65051 13.1815 8.82291 14.666 7.99998 14.666C7.20198 14.666 6.39959 13.2701 5.97485 11.1969L5.93615 11.0006H10.0638H5.93615Z"
-        fill="white"
-        fillOpacity="0.16"
+        d="M5.93615 11.0006H10.0638C9.65051 13.1815 8.82291 14.666 7.99998 14.666C7.20198 14.666 6.39959 13.2701 5.97485 11.1969L5.93615 11.0006H10.0638H5.93615ZM2.04385 11.0007L4.91427 11.0005C5.15745 12.3887 5.56964 13.5697 6.10906 14.3962C4.40051 13.8916 2.97807 12.7217 2.14141 11.1866L2.04385 11.0007ZM11.0857 11.0005L13.9561 11.0007C13.1352 12.6271 11.6678 13.8714 9.89157 14.3959C10.3946 13.6242 10.7871 12.5442 11.0348 11.2753L11.0857 11.0005L13.9561 11.0007L11.0857 11.0005ZM11.2876 6.66723L14.5343 6.66682C14.6218 7.0977 14.6677 7.54366 14.6677 8.00035C14.6677 8.69723 14.5608 9.36914 14.3625 10.0006H11.2274C11.2976 9.36221 11.3343 8.69149 11.3343 8.00035C11.3343 7.69747 11.3273 7.39851 11.3134 7.10447L11.2876 6.66723L14.5343 6.66682L11.2876 6.66723ZM1.46565 6.66682L4.71233 6.66723C4.6815 7.10053 4.66561 7.54603 4.66561 8.00035C4.66561 8.55326 4.68915 9.0931 4.73451 9.61379L4.77259 10.0006H1.6375C1.43919 9.36914 1.33228 8.69723 1.33228 8.00035C1.33228 7.54366 1.37819 7.0977 1.46565 6.66682ZM5.71697 6.66685H10.283C10.3165 7.09727 10.3343 7.54317 10.3343 8.00035C10.3343 8.55878 10.3077 9.10037 10.2584 9.6175L10.2173 10.0006H5.78261C5.70725 9.37011 5.66561 8.69839 5.66561 8.00035C5.66561 7.65746 5.67566 7.32093 5.69481 6.9925L5.71697 6.66685H10.283H5.71697ZM9.96282 1.71806L9.8909 1.60458C11.9031 2.19856 13.5191 3.7163 14.2479 5.66679L11.1873 5.66699C10.977 4.05571 10.5497 2.67192 9.96282 1.71806L9.8909 1.60458L9.96282 1.71806ZM6.02782 1.62912L6.10901 1.6046C5.52184 2.50428 5.08543 3.82402 4.85366 5.37376L4.81262 5.66699L1.75203 5.66679C2.471 3.74262 4.0534 2.23959 6.02782 1.62912L6.10901 1.6046L6.02782 1.62912ZM7.99998 1.33466C8.87917 1.33466 9.7637 3.02916 10.1426 5.45695L10.1739 5.66682H5.8261C6.1857 3.12737 7.09566 1.33466 7.99998 1.33466Z"
+        fill="#AFAFAF"
+      />
+      <path
+        d="M5.93615 11.0006H10.0638C9.65051 13.1815 8.82291 14.666 7.99998 14.666C7.20198 14.666 6.39959 13.2701 5.97485 11.1969L5.93615 11.0006H10.0638H5.93615ZM2.04385 11.0007L4.91427 11.0005C5.15745 12.3887 5.56964 13.5697 6.10906 14.3962C4.40051 13.8916 2.97807 12.7217 2.14141 11.1866L2.04385 11.0007ZM11.0857 11.0005L13.9561 11.0007C13.1352 12.6271 11.6678 13.8714 9.89157 14.3959C10.3946 13.6242 10.7871 12.5442 11.0348 11.2753L11.0857 11.0005L13.9561 11.0007L11.0857 11.0005ZM11.2876 6.66723L14.5343 6.66682C14.6218 7.0977 14.6677 7.54366 14.6677 8.00035C14.6677 8.69723 14.5608 9.36914 14.3625 10.0006H11.2274C11.2976 9.36221 11.3343 8.69149 11.3343 8.00035C11.3343 7.69747 11.3273 7.39851 11.3134 7.10447L11.2876 6.66723L14.5343 6.66682L11.2876 6.66723ZM1.46565 6.66682L4.71233 6.66723C4.6815 7.10053 4.66561 7.54603 4.66561 8.00035C4.66561 8.55326 4.68915 9.0931 4.73451 9.61379L4.77259 10.0006H1.6375C1.43919 9.36914 1.33228 8.69723 1.33228 8.00035C1.33228 7.54366 1.37819 7.0977 1.46565 6.66682ZM5.71697 6.66685H10.283C10.3165 7.09727 10.3343 7.54317 10.3343 8.00035C10.3343 8.55878 10.3077 9.10037 10.2584 9.6175L10.2173 10.0006H5.78261C5.70725 9.37011 5.66561 8.69839 5.66561 8.00035C5.66561 7.65746 5.67566 7.32093 5.69481 6.9925L5.71697 6.66685H10.283H5.71697ZM9.96282 1.71806L9.8909 1.60458C11.9031 2.19856 13.5191 3.7163 14.2479 5.66679L11.1873 5.66699C10.977 4.05571 10.5497 2.67192 9.96282 1.71806L9.8909 1.60458L9.96282 1.71806ZM6.02782 1.62912L6.10901 1.6046C5.52184 2.50428 5.08543 3.82402 4.85366 5.37376L4.81262 5.66699L1.75203 5.66679C2.471 3.74262 4.0534 2.23959 6.02782 1.62912L6.10901 1.6046L6.02782 1.62912ZM7.99998 1.33466C8.87917 1.33466 9.7637 3.02916 10.1426 5.45695L10.1739 5.66682H5.8261C6.1857 3.12737 7.09566 1.33466 7.99998 1.33466Z"
+        fill="#AFAFAF"
+      />
+      <path
+        d="M5.93615 11.0006H10.0638C9.65051 13.1815 8.82291 14.666 7.99998 14.666C7.20198 14.666 6.39959 13.2701 5.97485 11.1969L5.93615 11.0006H10.0638H5.93615ZM2.04385 11.0007L4.91427 11.0005C5.15745 12.3887 5.56964 13.5697 6.10906 14.3962C4.40051 13.8916 2.97807 12.7217 2.14141 11.1866L2.04385 11.0007ZM11.0857 11.0005L13.9561 11.0007C13.1352 12.6271 11.6678 13.8714 9.89157 14.3959C10.3946 13.6242 10.7871 12.5442 11.0348 11.2753L11.0857 11.0005L13.9561 11.0007L11.0857 11.0005ZM11.2876 6.66723L14.5343 6.66682C14.6218 7.0977 14.6677 7.54366 14.6677 8.00035C14.6677 8.69723 14.5608 9.36914 14.3625 10.0006H11.2274C11.2976 9.36221 11.3343 8.69149 11.3343 8.00035C11.3343 7.69747 11.3273 7.39851 11.3134 7.10447L11.2876 6.66723L14.5343 6.66682L11.2876 6.66723ZM1.46565 6.66682L4.71233 6.66723C4.6815 7.10053 4.66561 7.54603 4.66561 8.00035C4.66561 8.55326 4.68915 9.0931 4.73451 9.61379L4.77259 10.0006H1.6375C1.43919 9.36914 1.33228 8.69723 1.33228 8.00035C1.33228 7.54366 1.37819 7.0977 1.46565 6.66682ZM5.71697 6.66685H10.283C10.3165 7.09727 10.3343 7.54317 10.3343 8.00035C10.3343 8.55878 10.3077 9.10037 10.2584 9.6175L10.2173 10.0006H5.78261C5.70725 9.37011 5.66561 8.69839 5.66561 8.00035C5.66561 7.65746 5.67566 7.32093 5.69481 6.9925L5.71697 6.66685H10.283H5.71697ZM9.96282 1.71806L9.8909 1.60458C11.9031 2.19856 13.5191 3.7163 14.2479 5.66679L11.1873 5.66699C10.977 4.05571 10.5497 2.67192 9.96282 1.71806L9.8909 1.60458L9.96282 1.71806ZM6.02782 1.62912L6.10901 1.6046C5.52184 2.50428 5.08543 3.82402 4.85366 5.37376L4.81262 5.66699L1.75203 5.66679C2.471 3.74262 4.0534 2.23959 6.02782 1.62912L6.10901 1.6046L6.02782 1.62912ZM7.99998 1.33466C8.87917 1.33466 9.7637 3.02916 10.1426 5.45695L10.1739 5.66682H5.8261C6.1857 3.12737 7.09566 1.33466 7.99998 1.33466Z"
+        fill="#AFAFAF"
+      />
+      <path
+        d="M5.93615 11.0006H10.0638C9.65051 13.1815 8.82291 14.666 7.99998 14.666C7.20198 14.666 6.39959 13.2701 5.97485 11.1969L5.93615 11.0006H10.0638H5.93615ZM2.04385 11.0007L4.91427 11.0005C5.15745 12.3887 5.56964 13.5697 6.10906 14.3962C4.40051 13.8916 2.97807 12.7217 2.14141 11.1866L2.04385 11.0007ZM11.0857 11.0005L13.9561 11.0007C13.1352 12.6271 11.6678 13.8714 9.89157 14.3959C10.3946 13.6242 10.7871 12.5442 11.0348 11.2753L11.0857 11.0005L13.9561 11.0007L11.0857 11.0005ZM11.2876 6.66723L14.5343 6.66682C14.6218 7.0977 14.6677 7.54366 14.6677 8.00035C14.6677 8.69723 14.5608 9.36914 14.3625 10.0006H11.2274C11.2976 9.36221 11.3343 8.69149 11.3343 8.00035C11.3343 7.69747 11.3273 7.39851 11.3134 7.10447L11.2876 6.66723L14.5343 6.66682L11.2876 6.66723ZM1.46565 6.66682L4.71233 6.66723C4.6815 7.10053 4.66561 7.54603 4.66561 8.00035C4.66561 8.55326 4.68915 9.0931 4.73451 9.61379L4.77259 10.0006H1.6375C1.43919 9.36914 1.33228 8.69723 1.33228 8.00035C1.33228 7.54366 1.37819 7.0977 1.46565 6.66682ZM5.71697 6.66685H10.283C10.3165 7.09727 10.3343 7.54317 10.3343 8.00035C10.3343 8.55878 10.3077 9.10037 10.2584 9.6175L10.2173 10.0006H5.78261C5.70725 9.37011 5.66561 8.69839 5.66561 8.00035C5.66561 7.65746 5.67566 7.32093 5.69481 6.9925L5.71697 6.66685H10.283H5.71697ZM9.96282 1.71806L9.8909 1.60458C11.9031 2.19856 13.5191 3.7163 14.2479 5.66679L11.1873 5.66699C10.977 4.05571 10.5497 2.67192 9.96282 1.71806L9.8909 1.60458L9.96282 1.71806ZM6.02782 1.62912L6.10901 1.6046C5.52184 2.50428 5.08543 3.82402 4.85366 5.37376L4.81262 5.66699L1.75203 5.66679C2.471 3.74262 4.0534 2.23959 6.02782 1.62912L6.10901 1.6046L6.02782 1.62912ZM7.99998 1.33466C8.87917 1.33466 9.7637 3.02916 10.1426 5.45695L10.1739 5.66682H5.8261C6.1857 3.12737 7.09566 1.33466 7.99998 1.33466Z"
+        fill="#AFAFAF"
+      />
+      <path
+        d="M5.93615 11.0006H10.0638C9.65051 13.1815 8.82291 14.666 7.99998 14.666C7.20198 14.666 6.39959 13.2701 5.97485 11.1969L5.93615 11.0006H10.0638H5.93615ZM2.04385 11.0007L4.91427 11.0005C5.15745 12.3887 5.56964 13.5697 6.10906 14.3962C4.40051 13.8916 2.97807 12.7217 2.14141 11.1866L2.04385 11.0007ZM11.0857 11.0005L13.9561 11.0007C13.1352 12.6271 11.6678 13.8714 9.89157 14.3959C10.3946 13.6242 10.7871 12.5442 11.0348 11.2753L11.0857 11.0005L13.9561 11.0007L11.0857 11.0005ZM11.2876 6.66723L14.5343 6.66682C14.6218 7.0977 14.6677 7.54366 14.6677 8.00035C14.6677 8.69723 14.5608 9.36914 14.3625 10.0006H11.2274C11.2976 9.36221 11.3343 8.69149 11.3343 8.00035C11.3343 7.69747 11.3273 7.39851 11.3134 7.10447L11.2876 6.66723L14.5343 6.66682L11.2876 6.66723ZM1.46565 6.66682L4.71233 6.66723C4.6815 7.10053 4.66561 7.54603 4.66561 8.00035C4.66561 8.55326 4.68915 9.0931 4.73451 9.61379L4.77259 10.0006H1.6375C1.43919 9.36914 1.33228 8.69723 1.33228 8.00035C1.33228 7.54366 1.37819 7.0977 1.46565 6.66682ZM5.71697 6.66685H10.283C10.3165 7.09727 10.3343 7.54317 10.3343 8.00035C10.3343 8.55878 10.3077 9.10037 10.2584 9.6175L10.2173 10.0006H5.78261C5.70725 9.37011 5.66561 8.69839 5.66561 8.00035C5.66561 7.65746 5.67566 7.32093 5.69481 6.9925L5.71697 6.66685H10.283H5.71697ZM9.96282 1.71806L9.8909 1.60458C11.9031 2.19856 13.5191 3.7163 14.2479 5.66679L11.1873 5.66699C10.977 4.05571 10.5497 2.67192 9.96282 1.71806L9.8909 1.60458L9.96282 1.71806ZM6.02782 1.62912L6.10901 1.6046C5.52184 2.50428 5.08543 3.82402 4.85366 5.37376L4.81262 5.66699L1.75203 5.66679C2.471 3.74262 4.0534 2.23959 6.02782 1.62912L6.10901 1.6046L6.02782 1.62912ZM7.99998 1.33466C8.87917 1.33466 9.7637 3.02916 10.1426 5.45695L10.1739 5.66682H5.8261C6.1857 3.12737 7.09566 1.33466 7.99998 1.33466Z"
+        fill="#AFAFAF"
       />
     </svg>
-    URL
-  </span>
-</th>
-             <th className="bg-[#E6F0EA] border border-[#E3E5E8] px-3 py-2 text-xs font-bold text-[#3B3F4C] text-left">
-  <span className="flex items-center">
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 16 16"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="mr-1"
-    >
-      <path
-        d="M5.00002 5.00017V1.16667C5.00002 0.890529 5.22388 0.666672 5.50002 0.666672C5.77616 0.666672 6.00002 0.890529 6.00002 1.16667V5.00017C6.00002 5.18426 6.14926 5.3335 6.33335 5.3335C6.51745 5.3335 6.66669 5.18426 6.66669 5.00017V1.66667C6.66669 1.39053 6.89054 1.16667 7.16669 1.16667C7.44283 1.16667 7.66669 1.39053 7.66669 1.66667V5.50001C7.66669 5.51415 7.6661 5.52815 7.66495 5.542C7.95311 5.43312 8.31394 5.3308 8.66669 5.3308C8.99991 5.3308 9.28491 5.41403 9.49617 5.52043C9.60046 5.57296 9.69747 5.63652 9.77672 5.7086C9.81567 5.74403 9.86063 5.79083 9.89973 5.84899C9.93045 5.8947 10 6.00874 10 6.16667C10 6.33907 9.91121 6.4993 9.76502 6.59067L8.49412 7.38498L7.3889 8.64564L6.47071 9.91038C6.1258 10.3855 5.57422 10.6666 4.98713 10.6666H4.22811C3.60746 10.6666 3.01235 10.3514 2.69151 9.79257C2.49008 9.44174 2.24072 8.98076 2.04023 8.52452C1.84951 8.09048 1.66669 7.58261 1.66669 7.16664V2.50001C1.66669 2.22386 1.89054 2.00001 2.16669 2.00001C2.44283 2.00001 2.66669 2.22386 2.66669 2.50001V5.33196C2.66669 5.51605 2.81593 5.66529 3.00002 5.66529C3.18412 5.66529 3.33335 5.51605 3.33335 5.33196V1.66667C3.33335 1.39053 3.55721 1.16667 3.83335 1.16667C4.1095 1.16667 4.33335 1.39053 4.33335 1.66667V5.00017C4.33335 5.18426 4.48259 5.3335 4.66669 5.3335C4.85078 5.3335 5.00002 5.18426 5.00002 5.00017Z"
-        fill="#83A588"
-      />
-      <path
-        d="M9.99996 14.6667C7.86575 14.6667 6.06615 13.234 5.51044 11.278C6.10765 11.1501 6.6442 10.8061 7.01014 10.3021L7.91033 9.06211L8.93064 7.8983L10.1183 7.15602C10.4594 6.94282 10.6666 6.56894 10.6666 6.16669C10.6666 5.81248 10.5114 5.56406 10.453 5.47709C10.4203 5.42851 10.3864 5.38501 10.3532 5.34652C12.7655 5.52706 14.6666 7.54152 14.6666 10C14.6666 12.5773 12.5773 14.6667 9.99996 14.6667Z"
-        fill="#83A588"
-      />
-      <path
-        d="M12 9.33335C12 8.96516 11.7015 8.66669 11.3333 8.66669C10.9651 8.66669 10.6666 8.96516 10.6666 9.33335C10.6666 9.70154 10.9651 10 11.3333 10C11.7015 10 12 9.70154 12 9.33335Z"
-        fill="#83A588"
-      />
-    </svg>
-    Assigned
+    <span>Assigned</span>
   </span>
 </th>
               <th className="bg-[#EAE6F7] border border-[#E3E5E8] px-3 py-2 text-left text-xs font-bold text-[#3B2F4C]">Priority</th>
@@ -351,53 +374,40 @@ const DataGrid: React.FC = () => {
             {data.map((row, rowIndex) => (
               <tr key={row.id} className="hover:bg-gray-50">
                 {/* Index */}
-                <td 
-                  className={`border border-gray-200 px-3 py-2 text-sm text-gray-900 ${
-                    selectedCell?.row === rowIndex && selectedCell?.column === 0 
-                      ? 'bg-blue-100 ring-2 ring-blue-500' 
-                      : ''
-                  }`}
+                <td
+                  ref={el => { cellRefs.current[rowIndex] = cellRefs.current[rowIndex] || []; cellRefs.current[rowIndex][0] = el; }}
+                  tabIndex={-1}
+                  className={`border border-gray-200 px-3 py-2 text-sm text-gray-900 ${selectedCell?.row === rowIndex && selectedCell?.column === 0 ? 'bg-blue-100 ring-2 ring-blue-500' : ''}`}
                   onClick={() => handleCellClick(rowIndex, 0)}
                   onDoubleClick={() => handleCellDoubleClick(rowIndex, 0)}
                 >
                   {row.id}
                 </td>
-                
                 {/* Job Request */}
-                <td 
-                  className={`border border-gray-200 px-3 py-2 text-sm text-gray-900 ${
-                    selectedCell?.row === rowIndex && selectedCell?.column === 1 
-                      ? 'bg-blue-100 ring-2 ring-blue-500' 
-                      : ''
-                  }`}
+                <td
+                  ref={el => { cellRefs.current[rowIndex][1] = el; }}
+                  tabIndex={-1}
+                  className={`border border-gray-200 px-3 py-2 text-sm text-gray-900 ${selectedCell?.row === rowIndex && selectedCell?.column === 1 ? 'bg-blue-100 ring-2 ring-blue-500' : ''}`}
                   onClick={() => handleCellClick(rowIndex, 1)}
                   onDoubleClick={() => handleCellDoubleClick(rowIndex, 1)}
                 >
                   {row.jobRequest}
                 </td>
-                
                 {/* Submitted */}
-                
                 <td
-                 
-                  className={`border border-gray-200 px-3 py-2 text-right text-sm text-gray-900 ${
-                    selectedCell?.row === rowIndex && selectedCell?.column === 2 
-                      ? 'bg-blue-100 ring-2 ring-blue-500' 
-                      : ''
-                  }`}
+                  ref={el => { cellRefs.current[rowIndex][2] = el; }}
+                  tabIndex={-1}
+                  className={`border border-gray-200 px-3 py-2 text-right text-sm text-gray-900 ${selectedCell?.row === rowIndex && selectedCell?.column === 2 ? 'bg-blue-100 ring-2 ring-blue-500' : ''}`}
                   onClick={() => handleCellClick(rowIndex, 2)}
                   onDoubleClick={() => handleCellDoubleClick(rowIndex, 2)}
                 >
                   {row.submitted}
                 </td>
-                
                 {/* Status */}
-                <td 
-                  className={`border border-gray-200 px-3 py-2 text-center text-sm ${
-                    selectedCell?.row === rowIndex && selectedCell?.column === 3 
-                      ? 'bg-blue-100 ring-2 ring-blue-500' 
-                      : ''
-                  }`}
+                <td
+                  ref={el => { cellRefs.current[rowIndex][3] = el; }}
+                  tabIndex={-1}
+                  className={`border border-gray-200 px-3 py-2 text-center text-sm ${selectedCell?.row === rowIndex && selectedCell?.column === 3 ? 'bg-blue-100 ring-2 ring-blue-500' : ''}`}
                   onClick={() => handleCellClick(rowIndex, 3)}
                   onDoubleClick={() => handleCellDoubleClick(rowIndex, 3)}
                 >
@@ -408,27 +418,21 @@ const DataGrid: React.FC = () => {
                     {row.status}
                   </button>
                 </td>
-                
                 {/* Submitter */}
-                <td 
-                  className={`border border-gray-200 px-3 py-2 text-left text-sm text-gray-900 ${
-                    selectedCell?.row === rowIndex && selectedCell?.column === 4 
-                      ? 'bg-blue-100 ring-2 ring-blue-500' 
-                      : ''
-                  }`}
+                <td
+                  ref={el => { cellRefs.current[rowIndex][4] = el; }}
+                  tabIndex={-1}
+                  className={`border border-gray-200 px-3 py-2 text-left text-sm text-gray-900 ${selectedCell?.row === rowIndex && selectedCell?.column === 4 ? 'bg-blue-100 ring-2 ring-blue-500' : ''}`}
                   onClick={() => handleCellClick(rowIndex, 4)}
                   onDoubleClick={() => handleCellDoubleClick(rowIndex, 4)}
                 >
                   {row.submitter}
                 </td>
-                
                 {/* URL */}
-                <td 
-                  className={`border border-gray-200 px-3 py-2 text-sm ${
-                    selectedCell?.row === rowIndex && selectedCell?.column === 5 
-                      ? 'bg-blue-100 ring-2 ring-blue-500' 
-                      : ''
-                  }`}
+                <td
+                  ref={el => { cellRefs.current[rowIndex][5] = el; }}
+                  tabIndex={-1}
+                  className={`border border-gray-200 px-3 py-2 text-sm ${selectedCell?.row === rowIndex && selectedCell?.column === 5 ? 'bg-blue-100 ring-2 ring-blue-500' : ''}`}
                   onClick={() => handleCellClick(rowIndex, 5)}
                   onDoubleClick={() => handleCellDoubleClick(rowIndex, 5)}
                 >
@@ -439,28 +443,23 @@ const DataGrid: React.FC = () => {
                     {row.url}
                   </button>
                 </td>
-                
                 {/* Assigned */}
-                <td 
-                  className={`border border-gray-200 px-3 py-2 text-sm text-gray-900 ${
-                    selectedCell?.row === rowIndex && selectedCell?.column === 6 
-                      ? 'bg-blue-100 ring-2 ring-blue-500' 
-                      : ''
-                  }`}
+                <td
+                  ref={el => { cellRefs.current[rowIndex][6] = el; }}
+                  tabIndex={-1}
+                  className={`border border-gray-200 px-3 py-2 text-sm text-gray-900 ${selectedCell?.row === rowIndex && selectedCell?.column === 6 ? 'bg-blue-100 ring-2 ring-blue-500' : ''}`}
                   onClick={() => handleCellClick(rowIndex, 6)}
                   onDoubleClick={() => handleCellDoubleClick(rowIndex, 6)}
                 >
                   {row.assigned}
                 </td>
-                
                 {/* Priority */}
-                <td 
-                  className={`border border-gray-200 px-3 py-2 text-center text-sm ${
-                    selectedCell?.row === rowIndex && selectedCell?.column === 7 
-                      ? 'bg-blue-100 ring-2 ring-blue-500' 
-                      : ''
-                  }`}
-                  onClick={() => handleCellClick(rowIndex, 7)}
+                <td
+                  ref={el => { cellRefs.current[rowIndex][7] = el; }}
+                  tabIndex={-1}
+                  className={`border border-gray-200 px-3 py-2 text-center text-sm ${selectedCell?.row === rowIndex && selectedCell?.column === 7 ? 'bg-blue-100 ring-2 ring-blue-500' : ''}`}
+                  onClick={() => handleCellClick(rowIndex, 7)
+}
                   onDoubleClick={() => handleCellDoubleClick(rowIndex, 7)}
                 >
                   <button
@@ -470,27 +469,21 @@ const DataGrid: React.FC = () => {
                     {row.priority}
                   </button>
                 </td>
-                
                 {/* Due Date */}
-                <td 
-                  className={`border border-gray-200 px-3 py-2 text-right text-sm text-gray-900 ${
-                    selectedCell?.row === rowIndex && selectedCell?.column === 8 
-                      ? 'bg-blue-100 ring-2 ring-blue-500' 
-                      : ''
-                  }`}
+                <td
+                  ref={el => { cellRefs.current[rowIndex][8] = el; }}
+                  tabIndex={-1}
+                  className={`border border-gray-200 px-3 py-2 text-right text-sm text-gray-900 ${selectedCell?.row === rowIndex && selectedCell?.column === 8 ? 'bg-blue-100 ring-2 ring-blue-500' : ''}`}
                   onClick={() => handleCellClick(rowIndex, 8)}
                   onDoubleClick={() => handleCellDoubleClick(rowIndex, 8)}
                 >
                   {row.dueDate}
                 </td>
-                
                 {/* Est. Value */}
-                <td 
-                  className={`border border-gray-200 px-3 py-2 text-right text-sm text-gray-900 ${
-                    selectedCell?.row === rowIndex && selectedCell?.column === 9 
-                      ? 'bg-blue-100 ring-2 ring-blue-500' 
-                      : ''
-                  }`}
+                <td
+                  ref={el => { cellRefs.current[rowIndex][9] = el; }}
+                  tabIndex={-1}
+                  className={`border border-gray-200 px-3 py-2 text-right text-sm text-gray-900 ${selectedCell?.row === rowIndex && selectedCell?.column === 9 ? 'bg-blue-100 ring-2 ring-blue-500' : ''}`}
                   onClick={() => handleCellClick(rowIndex, 9)}
                   onDoubleClick={() => handleCellDoubleClick(rowIndex, 9)}
                 >
@@ -501,31 +494,24 @@ const DataGrid: React.FC = () => {
                     </svg>
                   </div>
                 </td>
-                <td 
-                  className={`border border-gray-200 px-3 py-2 text-sm text-gray-900 ${
-                    selectedCell?.row === rowIndex && selectedCell?.column === 9 
-                      ? 'bg-blue-100 ring-2 ring-blue-500' 
-                      : ''
-                  }`}
+                <td
+                  tabIndex={-1}
+                  className={`border border-gray-200 px-3 py-2 text-sm text-gray-900 ${selectedCell?.row === rowIndex && selectedCell?.column === 9 ? 'bg-blue-100 ring-2 ring-blue-500' : ''}`}
                   onClick={() => handleCellClick(rowIndex, 9)}
                   onDoubleClick={() => handleCellDoubleClick(rowIndex, 9)}
                 >
                 </td>
-                
               </tr>
             ))}
-            
             {/* Empty rows for spreadsheet feel */}
             {Array.from({ length: 20 }, (_, index) => (
               <tr key={`empty-${index}`} className="hover:bg-gray-50">
                 {columns.map((_, colIndex) => (
-                  <td 
+                  <td
+                    ref={el => { cellRefs.current[data.length + index] = cellRefs.current[data.length + index] || []; cellRefs.current[data.length + index][colIndex] = el; }}
+                    tabIndex={-1}
                     key={colIndex}
-                    className={`border border-gray-200 px-3 py-2 h-10 ${
-                      selectedCell?.row === data.length + index && selectedCell?.column === colIndex 
-                        ? 'bg-blue-100 ring-2 ring-blue-500' 
-                        : ''
-                    }`}
+                    className={`border border-gray-200 px-3 py-2 h-10 ${selectedCell?.row === data.length + index && selectedCell?.column === colIndex ? 'bg-blue-100 ring-2 ring-blue-500' : ''}`}
                     onClick={() => handleCellClick(data.length + index, colIndex)}
                     onDoubleClick={() => handleCellDoubleClick(data.length + index, colIndex)}
                   >
@@ -533,9 +519,7 @@ const DataGrid: React.FC = () => {
                   </td>
                 ))}
                 {/* Extra empty cell for '+' column */}
-                <td
-                  className="border border-gray-200 px-3 py-2 h-10"
-                ></td>
+                <td className="border border-gray-200 px-3 py-2 h-10"></td>
               </tr>
             ))}
           </tbody>
