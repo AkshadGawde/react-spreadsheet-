@@ -1,4 +1,9 @@
 import React, { useState } from "react";
+import panelIcon from "../assets/panel0.svg";
+import chevronIcon from "../assets/chevron0.svg";
+import moreIcon from "../assets/more0.svg";
+import alertIcon from "../assets/alert0.svg";
+import profileImage from "../assets/ellipse-10.png";
 
 const Header: React.FC = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -17,45 +22,145 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="flex items-center justify-between px-4 py-3 border-b border-gray-200 bg-white">
+    <header
+      className="flex items-center justify-between bg-white border-b border-[#eeeeee] overflow-hidden relative flex-shrink-0"
+      style={{
+        padding: "8px 16px",
+        alignSelf: "stretch",
+      }}
+    >
       {/* Left side - Navigation breadcrumb */}
-      <div className="flex items-center">
-        <div className="w-4 h-4 bg-gray-100 mr-3 flex items-center justify-center rounded">
-          <span className="text-gray-600 text-xs">�</span>
+      <div className="flex items-center" style={{ gap: "16px" }}>
+        <div
+          className="flex-shrink-0 relative overflow-visible"
+          style={{ width: "24px", height: "24px", aspectRatio: 1 }}
+        >
+          <img src={panelIcon} alt="Panel" className="w-full h-full" />
         </div>
-        <div className="text-sm flex items-center text-gray-600">
-          <span className="hover:text-gray-800 cursor-pointer">Workspace</span>
-          <span className="mx-2 text-gray-400">{">"}</span>
-          <span className="hover:text-gray-800 cursor-pointer">Folder 2</span>
-          <span className="mx-2 text-gray-400">{">"}</span>
-          <span className="font-medium text-gray-800">Spreadsheet 3</span>
-          <button className="ml-2 text-gray-400 hover:text-gray-600">
-            <span>•••</span>
-          </button>
+        <div className="flex items-center" style={{ gap: "4px" }}>
+          <div className="flex items-center" style={{ gap: "8px" }}>
+            <span
+              className="cursor-pointer text-left font-medium"
+              style={{
+                color: "#afafaf",
+                fontSize: "14px",
+                lineHeight: "20px",
+                fontWeight: 500,
+                fontFamily: "WorkSans-Medium, sans-serif",
+              }}
+            >
+              Workspace
+            </span>
+            <div
+              className="flex-shrink-0 relative overflow-visible"
+              style={{ width: "12px", height: "12px", aspectRatio: 1 }}
+            >
+              <img src={chevronIcon} alt="Chevron" className="w-full h-full" />
+            </div>
+            <span
+              className="cursor-pointer text-left font-medium"
+              style={{
+                color: "#afafaf",
+                fontSize: "14px",
+                lineHeight: "20px",
+                fontWeight: 500,
+                fontFamily: "WorkSans-Medium, sans-serif",
+              }}
+            >
+              Folder 2
+            </span>
+            <div
+              className="flex-shrink-0 relative overflow-visible"
+              style={{ width: "12px", height: "12px", aspectRatio: 1 }}
+            >
+              <img src={chevronIcon} alt="Chevron" className="w-full h-full" />
+            </div>
+            <span
+              className="text-left font-medium"
+              style={{
+                color: "#121212",
+                fontSize: "14px",
+                lineHeight: "20px",
+                fontWeight: 500,
+                fontFamily: "WorkSans-Medium, sans-serif",
+              }}
+            >
+              Spreadsheet 3
+            </span>
+          </div>
+          <div
+            className="flex items-center justify-center rounded cursor-pointer"
+            style={{
+              width: "24px",
+              height: "24px",
+              gap: "8px",
+              borderRadius: "4px",
+            }}
+          >
+            <img
+              src={moreIcon}
+              alt="More options"
+              style={{ width: "20px", height: "20px" }}
+            />
+          </div>
         </div>
       </div>
 
       {/* Right side - Search and user controls */}
-      <div className="flex items-center space-x-4">
+      <div className="flex items-center" style={{ gap: "4px" }}>
         {/* Search */}
-        <div className="relative">
-          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+        <div
+          className="flex items-center flex-shrink-0 relative overflow-hidden"
+          style={{
+            background: "#f6f6f6",
+            borderRadius: "6px",
+            border: "1px solid transparent",
+            padding: "12px",
+            gap: "8px",
+          }}
+        >
+          <div
+            className="flex-shrink-0 relative overflow-hidden flex items-center justify-center"
+            style={{
+              width: "16px",
+              height: "16px",
+              aspectRatio: 1,
+              padding: "8px",
+            }}
+          >
             <svg
-              className="h-4 w-4 text-gray-400"
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
               fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M14.4732 14.4733C14.2132 14.7333 13.7866 14.7333 13.5266 14.4733L11.3666 12.3067C11.7132 12.0267 12.0266 11.7133 12.3066 11.3667L14.4732 13.5267C14.7332 13.7867 14.7332 14.2133 14.4732 14.4733Z"
+                fill="#AFAFAF"
+              />
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M7.50004 12.3333C10.1694 12.3333 12.3334 10.1694 12.3334 7.5C12.3334 4.83062 10.1694 2.66667 7.50004 2.66667C4.83066 2.66667 2.66671 4.83062 2.66671 7.5C2.66671 10.1694 4.83066 12.3333 7.50004 12.3333ZM7.50004 13.6667C10.9058 13.6667 13.6667 10.9058 13.6667 7.5C13.6667 4.09424 10.9058 1.33333 7.50004 1.33333C4.09428 1.33333 1.33337 4.09424 1.33337 7.5C1.33337 10.9058 4.09428 13.6667 7.50004 13.6667Z"
+                fill="#AFAFAF"
               />
             </svg>
           </div>
           <input
-            className="pl-10 pr-4 py-2 rounded-md border border-gray-200 bg-gray-50 text-sm w-64 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="bg-transparent border-none outline-none text-left"
+            style={{
+              color: searchValue ? "#121212" : "#757575",
+              fontSize: "12px",
+              lineHeight: "16px",
+              fontWeight: 400,
+              fontFamily: "WorkSans-Regular, sans-serif",
+              textOverflow: "ellipsis",
+              overflow: "hidden",
+              whiteSpace: "nowrap",
+            }}
             type="text"
             placeholder="Search within sheet"
             value={searchValue}
@@ -63,56 +168,110 @@ const Header: React.FC = () => {
           />
         </div>
 
-        {/* Notification bell with badge */}
-        <div className="relative">
-          <button
-            onClick={handleNotificationClick}
-            className="p-2 text-gray-500 hover:text-gray-700 relative"
+        {/* Notification bell */}
+        <div
+          className="relative flex items-center flex-shrink-0 cursor-pointer"
+          style={{
+            background: "#ffffff",
+            borderRadius: "8px",
+            padding: "8px",
+            gap: "12px",
+          }}
+          onClick={handleNotificationClick}
+        >
+          <div
+            className="flex-shrink-0 relative overflow-visible"
+            style={{ width: "24px", height: "24px", aspectRatio: 1 }}
           >
-            <svg
-              className="h-5 w-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+            <img
+              src={alertIcon}
+              alt="Notifications"
+              className="w-full h-full"
+            />
+          </div>
+          <div
+            className="absolute flex items-center justify-center"
+            style={{
+              background: "#4b6a4f",
+              borderRadius: "100px",
+              border: "2px solid #ffffff",
+              width: "16px",
+              height: "16px",
+              right: "2px",
+              top: "2px",
+            }}
+          >
+            <span
+              className="text-center"
+              style={{
+                color: "#f6f6f6",
+                fontSize: "10px",
+                lineHeight: "16px",
+                fontWeight: 500,
+                fontFamily: "WorkSans-Medium, sans-serif",
+              }}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M15 17h5l-5-5V6a6 6 0 00-12 0v6l-5 5h5m7 0v1a3 3 0 01-6 0v-1m6 0H9"
-              />
-            </svg>
-            <span className="absolute -top-1 -right-1 h-4 w-4 bg-green-800 text-white text-xs rounded-full flex items-center justify-center">
               2
             </span>
-          </button>
+          </div>
         </div>
 
         {/* User profile */}
-        <div className="flex items-center space-x-2">
-          <button
-            onClick={handleProfileClick}
-            className="flex items-center space-x-2"
+        <div
+          className="flex items-center flex-shrink-0 relative cursor-pointer"
+          style={{
+            background: "#ffffff",
+            borderRadius: "8px",
+            padding: "6px 12px 6px 8px",
+            gap: "8px",
+          }}
+          onClick={handleProfileClick}
+        >
+          <img
+            src={profileImage}
+            alt="Profile"
+            className="flex-shrink-0 relative object-cover"
+            style={{
+              borderRadius: "50%",
+              width: "28px",
+              height: "28px",
+              aspectRatio: 1,
+            }}
+          />
+          <div
+            className="flex flex-col flex-shrink-0 relative"
+            style={{ maxWidth: "120px" }}
           >
-            {/* Profile SVG Image */}
-            <svg
-              width="32"
-              height="32"
-              viewBox="0 0 32 32"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="rounded-full"
+            <span
+              className="text-left"
+              style={{
+                color: "#121212",
+                fontSize: "12px",
+                lineHeight: "16px",
+                fontWeight: 400,
+                fontFamily: "WorkSans-Regular, sans-serif",
+              }}
             >
-              <circle cx="16" cy="16" r="16" fill="#E5E7EB" />
-              <circle cx="16" cy="12" r="4" fill="#9CA3AF" />
-              <path d="M8 26c0-4.418 3.582-8 8-8s8 3.582 8 8" fill="#9CA3AF" />
-            </svg>
-
-            <div className="hidden sm:flex flex-col">
-              <span className="text-sm text-gray-700">John Doe</span>
-              <p className="text-xs text-gray-500">john.doe...</p>
-            </div>
-          </button>
+              John Doe
+            </span>
+            <span
+              className="text-left"
+              style={{
+                margin: "-2px 0 0 0",
+                color: "#757575",
+                fontSize: "10px",
+                lineHeight: "12px",
+                fontWeight: 400,
+                fontFamily: "WorkSans-Regular, sans-serif",
+                alignSelf: "stretch",
+                textOverflow: "ellipsis",
+                overflow: "hidden",
+                whiteSpace: "nowrap",
+              }}
+            >
+              john.doe@companyname.com
+            </span>
+          </div>
         </div>
       </div>
     </header>

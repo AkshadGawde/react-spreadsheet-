@@ -1,0 +1,2115 @@
+.spreadsheet-style,
+.spreadsheet-style * {
+  box-sizing: border-box;
+}
+.spreadsheet-style {
+  background: var(--background-core-backgroundprimary, #ffffff);
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 1024px;
+  position: relative;
+  overflow: hidden;
+}
+.working-area {
+  background: var(--colours-platinum-50, #f8fafc);
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: var(--sidebar-animation-working-area-width, 1440px);
+  height: 1024px;
+  position: relative;
+  overflow: hidden;
+}
+.top-bar {
+  background: var(--background-core-backgroundprimary, #ffffff);
+  border-style: solid;
+  border-color: var(--border-core-bordertertiary, #eeeeee);
+  border-width: 0px 0px 1px 0px;
+  padding: 8px 16px 8px 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.path {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.panel {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  overflow: visible;
+  aspect-ratio: 1;
+}
+.breadcrumbs {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.breadcrumb-text {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.breadcrumb-text-previous-default {
+  color: var(--content-core-contentstatedisabledprimary, #afafaf);
+  text-align: left;
+  font-family: var(
+    --paragraph-14-s-medium-1420-font-family,
+    "WorkSans-Medium",
+    sans-serif
+  );
+  font-size: var(--paragraph-14-s-medium-1420-font-size, 14px);
+  line-height: var(--paragraph-14-s-medium-1420-line-height, 20px);
+  font-weight: var(--paragraph-14-s-medium-1420-font-weight, 500);
+  position: relative;
+}
+.chevron {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  position: relative;
+  overflow: visible;
+  aspect-ratio: 1;
+}
+.chevron2 {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  position: relative;
+  overflow: visible;
+  aspect-ratio: 1;
+}
+.spreadsheet-3 {
+  color: var(--content-core-contentprimary, #121212);
+  text-align: left;
+  font-family: var(
+    --paragraph-14-s-medium-1420-font-family,
+    "WorkSans-Medium",
+    sans-serif
+  );
+  font-size: var(--paragraph-14-s-medium-1420-font-size, 14px);
+  line-height: var(--paragraph-14-s-medium-1420-line-height, 20px);
+  font-weight: var(--paragraph-14-s-medium-1420-font-weight, 500);
+  position: relative;
+}
+.icon-frame {
+  border-radius: 4px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  position: relative;
+}
+.more {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  overflow: visible;
+  aspect-ratio: 1;
+}
+.actions-right {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.search {
+  background: var(--background-core-backgroundsecondary, #f6f6f6);
+  border-radius: 6px;
+  border-style: solid;
+  border-color: var(--border-core-bordersecondary, transparent);
+  border-width: 1px;
+  padding: 12px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.search-2 {
+  padding: 8px;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1;
+}
+.group {
+  width: 83.34%;
+  height: 83.34%;
+  position: absolute;
+  right: 8.32%;
+  left: 8.33%;
+  bottom: 8.32%;
+  top: 8.33%;
+  overflow: visible;
+}
+.search-within-sheet {
+  color: var(--content-core-contenttertiary, #757575);
+  text-align: left;
+  font-family: var(
+    --paragraph-12-xs-regular-1216-font-family,
+    "WorkSans-Regular",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-regular-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-regular-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-regular-1216-font-weight, 400);
+  position: relative;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.notification-bell {
+  background: var(--background-core-backgroundprimary, #ffffff);
+  border-radius: 8px;
+  padding: 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.alert {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  overflow: visible;
+  aspect-ratio: 1;
+}
+.notification-count {
+  background: var(--background-backgroundbrandprimary-default, #4b6a4f);
+  border-radius: 100px;
+  border-style: solid;
+  border-color: var(--colours-white, #ffffff);
+  border-width: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  right: 2px;
+  top: 2px;
+}
+._2 {
+  color: var(--content-core-contentinverseprimary, #f6f6f6);
+  text-align: left;
+  font-family: var(
+    --paragraph-10-xxs-medium-1016-font-family,
+    "WorkSans-Medium",
+    sans-serif
+  );
+  font-size: var(--paragraph-10-xxs-medium-1016-font-size, 10px);
+  line-height: var(--paragraph-10-xxs-medium-1016-line-height, 16px);
+  font-weight: var(--paragraph-10-xxs-medium-1016-font-weight, 500);
+  position: relative;
+}
+.profile-block {
+  background: var(--background-core-backgroundprimary, #ffffff);
+  border-radius: 8px;
+  padding: 6px 12px 6px 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.ellipse-1 {
+  border-radius: 50%;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  position: relative;
+  object-fit: cover;
+  aspect-ratio: 1;
+}
+.texts {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  max-width: 120px;
+  position: relative;
+}
+.anant-garg {
+  color: var(--content-core-contentprimary, #121212);
+  text-align: left;
+  font-family: var(
+    --paragraph-12-xs-regular-1216-font-family,
+    "WorkSans-Regular",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-regular-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-regular-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-regular-1216-font-weight, 400);
+  position: relative;
+}
+.anant-garg-companyname-com {
+  margin: -2px 0 0 0;
+  color: var(--content-core-contenttertiary, #757575);
+  text-align: left;
+  font-family: var(
+    --label-10-xxs-regular-font-family,
+    "WorkSans-Regular",
+    sans-serif
+  );
+  font-size: var(--label-10-xxs-regular-font-size, 10px);
+  line-height: var(--label-10-xxs-regular-line-height, 12px);
+  font-weight: var(--label-10-xxs-regular-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.row {
+  background: var(--background-core-backgroundprimary, #ffffff);
+  border-style: solid;
+  border-color: var(--border-core-bordertertiary, #eeeeee);
+  border-width: 0px 0px 1px 0px;
+  padding: 6px 8px 6px 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.toolbar {
+  background: var(--background-core-backgroundprimary, #ffffff);
+  border-radius: 4px;
+  border-style: solid;
+  border-color: var(--border-core-bordertertiary, transparent);
+  border-width: 1px;
+  padding: 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.tool-bar {
+  color: var(--content-core-contentprimary, #121212);
+  text-align: left;
+  font-family: var(
+    --paragraph-14-s-regular-1420-font-family,
+    "WorkSans-Regular",
+    sans-serif
+  );
+  font-size: var(--paragraph-14-s-regular-1420-font-size, 14px);
+  line-height: var(--paragraph-14-s-regular-1420-line-height, 20px);
+  font-weight: var(--paragraph-14-s-regular-1420-font-weight, 400);
+  position: relative;
+}
+.chevron-double {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  overflow: visible;
+  aspect-ratio: 1;
+}
+.separator-v-1-px {
+  background: var(--background-core-backgroundtertiary, #eeeeee);
+  flex-shrink: 0;
+  width: 1px;
+  height: 24px;
+  position: relative;
+}
+.table-controls-block {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 1;
+  position: relative;
+}
+.button-neutral {
+  background: var(--background-core-backgroundprimary, #ffffff);
+  border-radius: 6px;
+  padding: 8px 12px 8px 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.eye {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  overflow: visible;
+}
+.hide-fields {
+  color: var(--content-core-contentprimary, #121212);
+  text-align: left;
+  font-family: var(
+    --paragraph-14-s-regular-1420-font-family,
+    "WorkSans-Regular",
+    sans-serif
+  );
+  font-size: var(--paragraph-14-s-regular-1420-font-size, 14px);
+  line-height: var(--paragraph-14-s-regular-1420-line-height, 20px);
+  font-weight: var(--paragraph-14-s-regular-1420-font-weight, 400);
+  position: relative;
+}
+.arrow-sort {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  overflow: visible;
+}
+.import {
+  color: var(--content-core-contentprimary, #121212);
+  text-align: left;
+  font-family: var(
+    --paragraph-14-s-regular-1420-font-family,
+    "WorkSans-Regular",
+    sans-serif
+  );
+  font-size: var(--paragraph-14-s-regular-1420-font-size, 14px);
+  line-height: var(--paragraph-14-s-regular-1420-line-height, 20px);
+  font-weight: var(--paragraph-14-s-regular-1420-font-weight, 400);
+  position: relative;
+}
+.filter {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  overflow: visible;
+}
+.arrow-autofit {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  overflow: visible;
+}
+.actions-right2 {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-end;
+  flex-shrink: 0;
+  position: relative;
+}
+.controls {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.button-neutral2 {
+  background: var(--background-core-backgroundprimary, #ffffff);
+  border-radius: 6px;
+  border-style: solid;
+  border-color: var(--border-core-bordertertiary, #eeeeee);
+  border-width: 1px;
+  padding: 8px 12px 8px 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.arrow-download {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  overflow: visible;
+  aspect-ratio: 1;
+}
+.import2 {
+  color: var(--content-core-contentsecondary, #545454);
+  text-align: left;
+  font-family: var(
+    --paragraph-14-s-regular-1420-font-family,
+    "WorkSans-Regular",
+    sans-serif
+  );
+  font-size: var(--paragraph-14-s-regular-1420-font-size, 14px);
+  line-height: var(--paragraph-14-s-regular-1420-line-height, 20px);
+  font-weight: var(--paragraph-14-s-regular-1420-font-weight, 400);
+  position: relative;
+}
+.arrow-upload {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  overflow: visible;
+}
+.share {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  overflow: visible;
+}
+.button {
+  background: var(--new-action-button-bg, #4b6a4f);
+  border-radius: 6px;
+  padding: 8px 24px 8px 24px;
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.arrow-split {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  overflow: visible;
+  aspect-ratio: 1;
+}
+.new-action {
+  color: var(--content-core-contentoncolorprimary, #ffffff);
+  text-align: left;
+  font-family: var(
+    --paragraph-14-s-medium-1420-font-family,
+    "WorkSans-Medium",
+    sans-serif
+  );
+  font-size: var(--paragraph-14-s-medium-1420-font-size, 14px);
+  line-height: var(--paragraph-14-s-medium-1420-line-height, 20px);
+  font-weight: var(--paragraph-14-s-medium-1420-font-weight, 500);
+  position: relative;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.table {
+  background: var(--background-core-backgroundsecondary, #f6f6f6);
+  border-style: solid;
+  border-color: var(--colours-platinum-200, transparent);
+  border-width: 1px;
+  display: flex;
+  flex-direction: row;
+  gap: 1px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 872px;
+  position: relative;
+  overflow: hidden;
+}
+.table-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  width: 32px;
+  position: relative;
+}
+.blank-cell {
+  background: var(--background-core-backgroundprimary, #ffffff);
+  align-self: stretch;
+  flex-shrink: 0;
+  height: var(--cell-height-cell-height, 32px);
+  position: relative;
+  overflow: hidden;
+}
+.table-title-cell {
+  background: var(--lvl-2-background, #eeeeee);
+  padding: 0px 4px 0px 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: var(--cell-height-cell-height, 32px);
+  position: relative;
+}
+.icon-title {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 1;
+  position: relative;
+}
+.number-symbol {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  overflow: visible;
+}
+.blank-cell2 {
+  background: var(--background-core-backgroundprimary, #ffffff);
+  flex-shrink: 0;
+  width: 32px;
+  height: var(--cell-height-cell-height, 32px);
+  position: relative;
+  overflow: hidden;
+}
+._1 {
+  color: var(--content-core-contenttertiary, #757575);
+  text-align: center;
+  font-family: var(
+    --paragraph-14-s-regular-1420-font-family,
+    "WorkSans-Regular",
+    sans-serif
+  );
+  font-size: var(--paragraph-14-s-regular-1420-font-size, 14px);
+  line-height: var(--paragraph-14-s-regular-1420-line-height, 20px);
+  font-weight: var(--paragraph-14-s-regular-1420-font-weight, 400);
+  position: absolute;
+  left: 50%;
+  translate: -50% -50%;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.grouped-columns {
+  display: flex;
+  flex-direction: row;
+  gap: 1px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.filler-cell {
+  background: var(--colours-truegrey-200, #e2e2e2);
+  padding: 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  height: var(--cell-height-cell-height, 32px);
+  position: absolute;
+  right: 0px;
+  left: 0px;
+  top: 0px;
+  overflow: hidden;
+}
+.linked-to {
+  background: var(--lvl-2-background, #eeeeee);
+  border-radius: 4px;
+  padding: 4px;
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.link {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  overflow: visible;
+  aspect-ratio: 1;
+}
+.q-3-financial-overview {
+  color: var(--content-core-contentsecondary, #545454);
+  text-align: left;
+  font-family: var(
+    --paragraph-12-xs-regular-1216-font-family,
+    "WorkSans-Regular",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-regular-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-regular-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-regular-1216-font-weight, 400);
+  position: relative;
+}
+.arrow-sync {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  overflow: visible;
+  aspect-ratio: 1;
+}
+.table-column2 {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  width: 256px;
+  position: relative;
+}
+.filler-cell2 {
+  background: var(--background-core-backgroundprimary, #ffffff);
+  padding: 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: var(--cell-height-cell-height, 32px);
+  position: relative;
+  overflow: hidden;
+}
+.briefcase {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  overflow: visible;
+}
+.column-name {
+  color: var(--lvl-2-content, #757575);
+  text-align: left;
+  font-family: var(
+    --paragraph-12-xs-semi-bold-1216-font-family,
+    "WorkSans-SemiBold",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-semi-bold-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-semi-bold-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-semi-bold-1216-font-weight, 600);
+  position: relative;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.dropdown {
+  border-radius: 4px;
+  padding: 4px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.chevron3 {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  position: relative;
+  overflow: visible;
+  aspect-ratio: 1;
+}
+.content-cell {
+  background: var(--background-core-backgroundprimary, #ffffff);
+  padding: 0px 8px 0px 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: var(--cell-height-cell-height, 32px);
+  position: relative;
+  overflow: hidden;
+}
+.launch-social-media-campaign-for-product-xyz {
+  color: var(--content-core-contentprimary, #121212);
+  text-align: left;
+  font-family: var(
+    --paragraph-12-xs-regular-1216-font-family,
+    "WorkSans-Regular",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-regular-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-regular-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-regular-1216-font-weight, 400);
+  position: relative;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.update-press-kit-for-company-redesign {
+  color: var(--content-core-contentprimary, #121212);
+  text-align: left;
+  font-family: var(
+    --paragraph-12-xs-regular-1216-font-family,
+    "WorkSans-Regular",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-regular-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-regular-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-regular-1216-font-weight, 400);
+  position: relative;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.finalize-user-testing-feedback-for-app-update {
+  color: var(--content-core-contentprimary, #121212);
+  text-align: left;
+  font-family: var(
+    --paragraph-12-xs-regular-1216-font-family,
+    "WorkSans-Regular",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-regular-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-regular-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-regular-1216-font-weight, 400);
+  position: relative;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.design-new-features-for-the-website {
+  color: var(--content-core-contentprimary, #121212);
+  text-align: left;
+  font-family: var(
+    --paragraph-12-xs-regular-1216-font-family,
+    "WorkSans-Regular",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-regular-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-regular-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-regular-1216-font-weight, 400);
+  position: relative;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.prepare-financial-report-for-q-4 {
+  color: var(--content-core-contentprimary, #121212);
+  text-align: left;
+  font-family: var(
+    --paragraph-12-xs-regular-1216-font-family,
+    "WorkSans-Regular",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-regular-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-regular-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-regular-1216-font-weight, 400);
+  position: relative;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.table-column3 {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  width: 124px;
+  position: relative;
+}
+.calendar {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  overflow: visible;
+  aspect-ratio: 1;
+}
+.chevron4 {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  position: relative;
+  overflow: visible;
+  aspect-ratio: 1;
+}
+._15-11-2024 {
+  color: var(--content-core-contentprimary, #121212);
+  text-align: right;
+  font-family: var(
+    --paragraph-12-xs-regular-1216-font-family,
+    "WorkSans-Regular",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-regular-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-regular-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-regular-1216-font-weight, 400);
+  position: relative;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+._28-10-2024 {
+  color: var(--content-core-contentprimary, #121212);
+  text-align: right;
+  font-family: var(
+    --paragraph-12-xs-regular-1216-font-family,
+    "WorkSans-Regular",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-regular-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-regular-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-regular-1216-font-weight, 400);
+  position: relative;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+._05-12-2024 {
+  color: var(--content-core-contentprimary, #121212);
+  text-align: right;
+  font-family: var(
+    --paragraph-12-xs-regular-1216-font-family,
+    "WorkSans-Regular",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-regular-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-regular-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-regular-1216-font-weight, 400);
+  position: relative;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+._10-01-2025 {
+  color: var(--content-core-contentprimary, #121212);
+  text-align: right;
+  font-family: var(
+    --paragraph-12-xs-regular-1216-font-family,
+    "WorkSans-Regular",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-regular-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-regular-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-regular-1216-font-weight, 400);
+  position: relative;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+._25-01-2025 {
+  color: var(--content-core-contentprimary, #121212);
+  text-align: right;
+  font-family: var(
+    --paragraph-12-xs-regular-1216-font-family,
+    "WorkSans-Regular",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-regular-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-regular-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-regular-1216-font-weight, 400);
+  position: relative;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.filler-cell3 {
+  background: var(--background-core-backgroundprimary, #ffffff);
+  border-style: solid;
+  border-color: #6c8b70;
+  border-width: 1px;
+  padding: 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: var(--cell-height-cell-height, 32px);
+  position: relative;
+  box-shadow: 0px 0px 12px 0px rgba(10, 110, 61, 0.22),
+    0px 0px 4px -2px rgba(10, 110, 61, 0.6);
+  overflow: hidden;
+}
+.chevron-circle {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  overflow: visible;
+}
+.chevron5 {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  position: relative;
+  overflow: visible;
+  aspect-ratio: 1;
+}
+.status {
+  background: var(--colours-yellow-100, #fff3d6);
+  border-radius: 100px;
+  padding: 4px 8px 4px 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.in-process {
+  color: var(--colours-yellow-800, #85640b);
+  text-align: left;
+  font-family: var(
+    --paragraph-12-xs-medium-1216-font-family,
+    "WorkSans-Medium",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-medium-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-medium-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-medium-1216-font-weight, 500);
+  position: relative;
+}
+.status2 {
+  background: var(--colours-platinum-200, #e2e8f0);
+  border-radius: 100px;
+  padding: 4px 8px 4px 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.need-to-start {
+  color: var(--colours-platinum-600, #475569);
+  text-align: left;
+  font-family: var(
+    --paragraph-12-xs-medium-1216-font-family,
+    "WorkSans-Medium",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-medium-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-medium-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-medium-1216-font-weight, 500);
+  position: relative;
+}
+.status3 {
+  background: var(--colours-green-100, #d3f2e3);
+  border-radius: 100px;
+  padding: 4px 8px 4px 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.complete {
+  color: var(--colours-green-700, #0a6e3d);
+  text-align: left;
+  font-family: var(
+    --paragraph-12-xs-medium-1216-font-family,
+    "WorkSans-Medium",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-medium-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-medium-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-medium-1216-font-weight, 500);
+  position: relative;
+}
+.status4 {
+  background: var(--colours-red-100, #ffe1de);
+  border-radius: 100px;
+  padding: 4px 8px 4px 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.blocked {
+  color: var(--colours-red-700, #c22219);
+  text-align: left;
+  font-family: var(
+    --paragraph-12-xs-medium-1216-font-family,
+    "WorkSans-Medium",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-medium-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-medium-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-medium-1216-font-weight, 500);
+  position: relative;
+}
+.person {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  overflow: visible;
+}
+.chevron6 {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  position: relative;
+  overflow: visible;
+  aspect-ratio: 1;
+}
+.aisha-patel {
+  color: var(--content-core-contentprimary, #121212);
+  text-align: left;
+  font-family: var(
+    --paragraph-12-xs-regular-1216-font-family,
+    "WorkSans-Regular",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-regular-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-regular-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-regular-1216-font-weight, 400);
+  position: relative;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.irfan-khan {
+  color: var(--content-core-contentprimary, #121212);
+  text-align: left;
+  font-family: var(
+    --paragraph-12-xs-regular-1216-font-family,
+    "WorkSans-Regular",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-regular-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-regular-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-regular-1216-font-weight, 400);
+  position: relative;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.mark-johnson {
+  color: var(--content-core-contentprimary, #121212);
+  text-align: left;
+  font-family: var(
+    --paragraph-12-xs-regular-1216-font-family,
+    "WorkSans-Regular",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-regular-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-regular-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-regular-1216-font-weight, 400);
+  position: relative;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.emily-green {
+  color: var(--content-core-contentprimary, #121212);
+  text-align: left;
+  font-family: var(
+    --paragraph-12-xs-regular-1216-font-family,
+    "WorkSans-Regular",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-regular-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-regular-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-regular-1216-font-weight, 400);
+  position: relative;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.jessica-brown {
+  color: var(--content-core-contentprimary, #121212);
+  text-align: left;
+  font-family: var(
+    --paragraph-12-xs-regular-1216-font-family,
+    "WorkSans-Regular",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-regular-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-regular-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-regular-1216-font-weight, 400);
+  position: relative;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.globe {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  overflow: visible;
+}
+.chevron7 {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  position: relative;
+  overflow: visible;
+  aspect-ratio: 1;
+}
+.www-aishapatel-com {
+  color: var(--content-core-contentprimary, #121212);
+  text-align: left;
+  font-family: var(--font-family-body, "WorkSans-Regular", sans-serif);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  text-decoration: underline;
+  position: relative;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.www-irfankhanportfolio-com {
+  color: var(--content-core-contentprimary, #121212);
+  text-align: left;
+  font-family: var(--font-family-body, "WorkSans-Regular", sans-serif);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  text-decoration: underline;
+  position: relative;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.www-markjohnsondesigns-com {
+  color: var(--content-core-contentprimary, #121212);
+  text-align: left;
+  font-family: var(--font-family-body, "WorkSans-Regular", sans-serif);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  text-decoration: underline;
+  position: relative;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.www-emilygreenart-com {
+  color: var(--content-core-contentprimary, #121212);
+  text-align: left;
+  font-family: var(--font-family-body, "WorkSans-Regular", sans-serif);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  text-decoration: underline;
+  position: relative;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.www-jessicabrowncreative-com {
+  color: var(--content-core-contentprimary, #121212);
+  text-align: left;
+  font-family: var(--font-family-body, "WorkSans-Regular", sans-serif);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  text-decoration: underline;
+  position: relative;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.table-title-cell2 {
+  background: var(--lvl-1-background, #d2e0d4);
+  padding: 0px 16px 0px 16px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: var(--cell-height-cell-height, 32px);
+  position: relative;
+}
+.function-block {
+  border-radius: 4px;
+  padding: 2px 4px 2px 4px;
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.arrow-split2 {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  overflow: visible;
+  aspect-ratio: 1;
+}
+.answer-a-question {
+  color: var(--lvl-1-content, #505450);
+  text-align: left;
+  font-family: var(
+    --paragraph-14-s-medium-1420-font-family,
+    "WorkSans-Medium",
+    sans-serif
+  );
+  font-size: var(--paragraph-14-s-medium-1420-font-size, 14px);
+  line-height: var(--paragraph-14-s-medium-1420-line-height, 20px);
+  font-weight: var(--paragraph-14-s-medium-1420-font-weight, 500);
+  position: relative;
+}
+.icon-frame2 {
+  border-radius: 4px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  aspect-ratio: 1;
+}
+.more2 {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  overflow: visible;
+  aspect-ratio: 1;
+}
+.table-title-cell3 {
+  background: var(--lvl-2-background, #e8f0e9);
+  padding: 0px 4px 0px 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: var(--cell-height-cell-height, 32px);
+  position: relative;
+}
+.emoji {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  overflow: visible;
+}
+.column-name2 {
+  color: var(--lvl-2-content, #666c66);
+  text-align: left;
+  font-family: var(
+    --paragraph-12-xs-semi-bold-1216-font-family,
+    "WorkSans-SemiBold",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-semi-bold-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-semi-bold-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-semi-bold-1216-font-weight, 600);
+  position: relative;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.sophie-choudhury {
+  color: var(--content-core-contentprimary, #121212);
+  text-align: left;
+  font-family: var(
+    --paragraph-12-xs-regular-1216-font-family,
+    "WorkSans-Regular",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-regular-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-regular-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-regular-1216-font-weight, 400);
+  position: relative;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.tejas-pandey {
+  color: var(--content-core-contentprimary, #121212);
+  text-align: left;
+  font-family: var(
+    --paragraph-12-xs-regular-1216-font-family,
+    "WorkSans-Regular",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-regular-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-regular-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-regular-1216-font-weight, 400);
+  position: relative;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.rachel-lee {
+  color: var(--content-core-contentprimary, #121212);
+  text-align: left;
+  font-family: var(
+    --paragraph-12-xs-regular-1216-font-family,
+    "WorkSans-Regular",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-regular-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-regular-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-regular-1216-font-weight, 400);
+  position: relative;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.tom-wright {
+  color: var(--content-core-contentprimary, #121212);
+  text-align: left;
+  font-family: var(
+    --paragraph-12-xs-regular-1216-font-family,
+    "WorkSans-Regular",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-regular-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-regular-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-regular-1216-font-weight, 400);
+  position: relative;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.kevin-smith {
+  color: var(--content-core-contentprimary, #121212);
+  text-align: left;
+  font-family: var(
+    --paragraph-12-xs-regular-1216-font-family,
+    "WorkSans-Regular",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-regular-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-regular-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-regular-1216-font-weight, 400);
+  position: relative;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.function-results-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  align-items: flex-start;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  width: 251px;
+  position: relative;
+}
+.table-title-cell4 {
+  background: var(--lvl-1-background, #dccffc);
+  padding: 0px 16px 0px 16px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: var(--cell-height-cell-height, 32px);
+  position: relative;
+}
+.arrow-split3 {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  overflow: visible;
+  aspect-ratio: 1;
+}
+.answer-a-question2 {
+  color: var(--lvl-1-content, #463e59);
+  text-align: left;
+  font-family: var(
+    --paragraph-14-s-medium-1420-font-family,
+    "WorkSans-Medium",
+    sans-serif
+  );
+  font-size: var(--paragraph-14-s-medium-1420-font-size, 14px);
+  line-height: var(--paragraph-14-s-medium-1420-line-height, 20px);
+  font-weight: var(--paragraph-14-s-medium-1420-font-weight, 500);
+  position: relative;
+}
+.more3 {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  overflow: visible;
+  aspect-ratio: 1;
+}
+.function-result-cols {
+  display: flex;
+  flex-direction: row;
+  gap: 1px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex: 1;
+  position: relative;
+}
+.table-column4 {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex: 1;
+  position: relative;
+}
+.table-title-cell5 {
+  background: var(--lvl-2-background, #eae3fc);
+  padding: 0px 4px 0px 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: var(--cell-height-cell-height, 32px);
+  position: relative;
+}
+.column-name3 {
+  color: var(--lvl-2-content, #655c80);
+  text-align: left;
+  font-family: var(
+    --paragraph-12-xs-semi-bold-1216-font-family,
+    "WorkSans-SemiBold",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-semi-bold-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-semi-bold-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-semi-bold-1216-font-weight, 600);
+  position: relative;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.medium {
+  color: var(--content-core-contentwarning, #c29210);
+  text-align: center;
+  font-family: var(
+    --paragraph-12-xs-semi-bold-1216-font-family,
+    "WorkSans-SemiBold",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-semi-bold-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-semi-bold-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-semi-bold-1216-font-weight, 600);
+  position: relative;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.high {
+  color: var(--content-core-contentnegative, #ef4d44);
+  text-align: center;
+  font-family: var(
+    --paragraph-12-xs-semi-bold-1216-font-family,
+    "WorkSans-SemiBold",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-semi-bold-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-semi-bold-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-semi-bold-1216-font-weight, 600);
+  position: relative;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.low {
+  color: var(--content-contentinfo-default, #1a8cff);
+  text-align: center;
+  font-family: var(
+    --paragraph-12-xs-semi-bold-1216-font-family,
+    "WorkSans-SemiBold",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-semi-bold-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-semi-bold-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-semi-bold-1216-font-weight, 600);
+  position: relative;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+._20-11-2024 {
+  color: var(--content-core-contentprimary, #121212);
+  text-align: right;
+  font-family: var(
+    --paragraph-12-xs-regular-1216-font-family,
+    "WorkSans-Regular",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-regular-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-regular-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-regular-1216-font-weight, 400);
+  position: relative;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+._30-10-2024 {
+  color: var(--content-core-contentprimary, #121212);
+  text-align: right;
+  font-family: var(
+    --paragraph-12-xs-regular-1216-font-family,
+    "WorkSans-Regular",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-regular-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-regular-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-regular-1216-font-weight, 400);
+  position: relative;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+._10-12-2024 {
+  color: var(--content-core-contentprimary, #121212);
+  text-align: right;
+  font-family: var(
+    --paragraph-12-xs-regular-1216-font-family,
+    "WorkSans-Regular",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-regular-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-regular-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-regular-1216-font-weight, 400);
+  position: relative;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+._15-01-2025 {
+  color: var(--content-core-contentprimary, #121212);
+  text-align: right;
+  font-family: var(
+    --paragraph-12-xs-regular-1216-font-family,
+    "WorkSans-Regular",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-regular-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-regular-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-regular-1216-font-weight, 400);
+  position: relative;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+._30-01-2025 {
+  color: var(--content-core-contentprimary, #121212);
+  text-align: right;
+  font-family: var(
+    --paragraph-12-xs-regular-1216-font-family,
+    "WorkSans-Regular",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-regular-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-regular-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-regular-1216-font-weight, 400);
+  position: relative;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.function-results-col2 {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  align-items: flex-start;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  width: 124px;
+  position: relative;
+}
+.table-title-cell6 {
+  background: var(--lvl-1-background, #fac2af);
+  padding: 0px 16px 0px 16px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: var(--cell-height-cell-height, 32px);
+  position: relative;
+}
+.arrow-split4 {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  overflow: visible;
+  aspect-ratio: 1;
+}
+.answer-a-question3 {
+  color: var(--lvl-1-content, #695149);
+  text-align: left;
+  font-family: var(
+    --paragraph-14-s-medium-1420-font-family,
+    "WorkSans-Medium",
+    sans-serif
+  );
+  font-size: var(--paragraph-14-s-medium-1420-font-size, 14px);
+  line-height: var(--paragraph-14-s-medium-1420-line-height, 20px);
+  font-weight: var(--paragraph-14-s-medium-1420-font-weight, 500);
+  position: relative;
+}
+.more4 {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  overflow: visible;
+  aspect-ratio: 1;
+}
+.table-column5 {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex: 1;
+  width: 124px;
+  position: relative;
+}
+.table-title-cell7 {
+  background: var(--lvl-2-background, #ffe9e0);
+  padding: 0px 4px 0px 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: var(--cell-height-cell-height, 32px);
+  position: relative;
+}
+.column-name4 {
+  color: var(--lvl-2-content, #8c6c62);
+  text-align: left;
+  font-family: var(
+    --paragraph-12-xs-semi-bold-1216-font-family,
+    "WorkSans-SemiBold",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-semi-bold-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-semi-bold-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-semi-bold-1216-font-weight, 600);
+  position: relative;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.content-cell2 {
+  background: var(--background-core-backgroundprimary, #ffffff);
+  padding: 0px 8px 0px 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: var(--cell-height-cell-height, 32px);
+  position: relative;
+  overflow: hidden;
+}
+._6-200-000 {
+  color: var(--content-core-contentprimary, #121212);
+  text-align: right;
+  font-family: var(
+    --paragraph-12-xs-regular-1216-font-family,
+    "WorkSans-Regular",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-regular-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-regular-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-regular-1216-font-weight, 400);
+  position: relative;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.div {
+  color: var(--content-core-contentstatedisabledprimary, #afafaf);
+  text-align: right;
+  font-family: var(
+    --paragraph-12-xs-medium-1216-font-family,
+    "WorkSans-Medium",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-medium-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-medium-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-medium-1216-font-weight, 500);
+  position: relative;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+._3-500-000 {
+  color: var(--content-core-contentprimary, #121212);
+  text-align: right;
+  font-family: var(
+    --paragraph-12-xs-regular-1216-font-family,
+    "WorkSans-Regular",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-regular-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-regular-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-regular-1216-font-weight, 400);
+  position: relative;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+._4-750-000 {
+  color: var(--content-core-contentprimary, #121212);
+  text-align: right;
+  font-family: var(
+    --paragraph-12-xs-regular-1216-font-family,
+    "WorkSans-Regular",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-regular-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-regular-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-regular-1216-font-weight, 400);
+  position: relative;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+._5-900-000 {
+  color: var(--content-core-contentprimary, #121212);
+  text-align: right;
+  font-family: var(
+    --paragraph-12-xs-regular-1216-font-family,
+    "WorkSans-Regular",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-regular-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-regular-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-regular-1216-font-weight, 400);
+  position: relative;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+._2-800-000 {
+  color: var(--content-core-contentprimary, #121212);
+  text-align: right;
+  font-family: var(
+    --paragraph-12-xs-regular-1216-font-family,
+    "WorkSans-Regular",
+    sans-serif
+  );
+  font-size: var(--paragraph-12-xs-regular-1216-font-size, 12px);
+  line-height: var(--paragraph-12-xs-regular-1216-line-height, 16px);
+  font-weight: var(--paragraph-12-xs-regular-1216-font-weight, 400);
+  position: relative;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.table-column6 {
+  border-style: dashed;
+  border-color: var(--border-core-borderprimary, #cbcbcb);
+  border-width: 1px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  width: 124px;
+  position: relative;
+  overflow: hidden;
+}
+.filler-cell4 {
+  background: var(--background-core-backgroundtertiary, #eeeeee);
+  padding: 0px 8px 0px 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: var(--cell-height-cell-height, 32px);
+  position: relative;
+  overflow: hidden;
+}
+.add {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  overflow: visible;
+  aspect-ratio: 1;
+}
+.title-row {
+  background: var(--background-core-backgroundprimary, #ffffff);
+  border-style: solid;
+  border-color: var(--border-core-bordertertiary, #eeeeee);
+  border-width: 1px 0px 0px 0px;
+  padding: 4px 16px 0px 32px;
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.view-list {
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.view-item {
+  background: var(--colours-brandprimary-100, #e8f0e9);
+  border-style: solid;
+  border-color: var(--border-borderbrandprimary-default, #4b6a4f);
+  border-width: 2px 0px 0px 0px;
+  padding: 10px 16px 10px 16px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.all-orders {
+  color: var(--colours-brandprimary-700, #3e5741);
+  text-align: left;
+  font-family: var(
+    --paragraph-16-m-semi-bold-1624-font-family,
+    "WorkSans-SemiBold",
+    sans-serif
+  );
+  font-size: var(--paragraph-16-m-semi-bold-1624-font-size, 16px);
+  line-height: var(--paragraph-16-m-semi-bold-1624-line-height, 24px);
+  font-weight: var(--paragraph-16-m-semi-bold-1624-font-weight, 600);
+  position: relative;
+}
+.view-item2 {
+  padding: 10px 16px 10px 16px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.pending {
+  color: var(--content-core-contenttertiary, #757575);
+  text-align: left;
+  font-family: var(
+    --paragraph-16-m-medium-1624-font-family,
+    "WorkSans-Medium",
+    sans-serif
+  );
+  font-size: var(--paragraph-16-m-medium-1624-font-size, 16px);
+  line-height: var(--paragraph-16-m-medium-1624-line-height, 24px);
+  font-weight: var(--paragraph-16-m-medium-1624-font-weight, 500);
+  position: relative;
+}
+.reviewed {
+  color: var(--content-core-contenttertiary, #757575);
+  text-align: left;
+  font-family: var(
+    --paragraph-16-m-medium-1624-font-family,
+    "WorkSans-Medium",
+    sans-serif
+  );
+  font-size: var(--paragraph-16-m-medium-1624-font-size, 16px);
+  line-height: var(--paragraph-16-m-medium-1624-line-height, 24px);
+  font-weight: var(--paragraph-16-m-medium-1624-font-weight, 500);
+  position: relative;
+}
+.arrived {
+  color: var(--content-core-contenttertiary, #757575);
+  text-align: left;
+  font-family: var(
+    --paragraph-16-m-medium-1624-font-family,
+    "WorkSans-Medium",
+    sans-serif
+  );
+  font-size: var(--paragraph-16-m-medium-1624-font-size, 16px);
+  line-height: var(--paragraph-16-m-medium-1624-line-height, 24px);
+  font-weight: var(--paragraph-16-m-medium-1624-font-weight, 500);
+  position: relative;
+}
+.view-item3 {
+  padding: 8px 4px 8px 4px;
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.icon-frame3 {
+  background: var(--background-core-backgroundprimary, #ffffff);
+  border-radius: 4px;
+  padding: 4px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.plus {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  aspect-ratio: 1;
+}
+.group2 {
+  width: 75%;
+  height: 75%;
+  position: absolute;
+  right: 12.5%;
+  left: 12.5%;
+  bottom: 12.5%;
+  top: 12.5%;
+  overflow: visible;
+}
