@@ -1,0 +1,27 @@
+
+> spreadsheet-prototype@0.1.0 lint
+> eslint .
+
+
+/Users/akshadgawde/Desktop/Developer/shiv/src/components/DataGrid.tsx
+   87:13  error  Replace `·column·=·Math.min(column·+·1,·totalCols·-·1);` with `⏎··········column·=·Math.min(column·+·1,·totalCols·-·1);⏎·······`  prettier/prettier
+   88:8   error  Delete `⏎·····`                                                                                                                   prettier/prettier
+   90:13  error  Replace `·column·=·Math.max(column·-·1,·0);` with `⏎··········column·=·Math.max(column·-·1,·0);⏎·······`                          prettier/prettier
+   91:8   error  Delete `⏎·····`                                                                                                                   prettier/prettier
+  101:39  error  Insert `⏎····`                                                                                                                    prettier/prettier
+  102:5   error  Insert `··`                                                                                                                       prettier/prettier
+  103:5   error  Insert `··`                                                                                                                       prettier/prettier
+  104:1   error  Replace `····` with `······`                                                                                                      prettier/prettier
+  105:3   error  Replace `},·[columns]` with `··},⏎····[columns],⏎··`                                                                              prettier/prettier
+  107:45  error  Insert `⏎····`                                                                                                                    prettier/prettier
+  108:5   error  Insert `··`                                                                                                                       prettier/prettier
+  109:5   error  Insert `··`                                                                                                                       prettier/prettier
+  110:1   error  Replace `····` with `······`                                                                                                      prettier/prettier
+  111:3   error  Replace `},·[columns]` with `··},⏎····[columns],⏎··`                                                                              prettier/prettier
+
+/Users/akshadgawde/Desktop/Developer/shiv/src/types/svg.d.ts
+  19:2  error  Insert `⏎`  prettier/prettier
+
+✖ 15 problems (15 errors, 0 warnings)
+  15 errors and 0 warnings potentially fixable with the `--fix` option.
+

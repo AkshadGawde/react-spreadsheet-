@@ -1,11 +1,24 @@
 import React from "react";
+import briefcaseIcon from "../assets/briefcase0.svg";
+import chevronIcon from "../assets/chevron2.svg";
+import calendarIcon from "../assets/calendar0.svg";
+import chevronCircleIcon from "../assets/chevron-circle0.svg";
+import personIcon from "../assets/person0.svg";
+import globeIcon from "../assets/globe0.svg";
+import emojiIcon from "../assets/emoji0.svg";
 
 interface DataGridHeaderProps {
   colWidths: number[];
-  handleResizeMouseDown: (e: React.MouseEvent<HTMLDivElement>, colIdx: number) => void;
+  handleResizeMouseDown: (
+    e: React.MouseEvent<HTMLDivElement>,
+    colIdx: number,
+  ) => void;
 }
 
-const DataGridHeader: React.FC<DataGridHeaderProps> = ({ colWidths, handleResizeMouseDown }) => {
+const DataGridHeader: React.FC<DataGridHeaderProps> = ({
+  colWidths,
+  handleResizeMouseDown,
+}) => {
   return (
     <thead>
       {/* Grouped header row */}
@@ -109,38 +122,96 @@ const DataGridHeader: React.FC<DataGridHeaderProps> = ({ colWidths, handleResize
           <div onMouseDown={(e) => handleResizeMouseDown(e, 0)} className="absolute right-0 top-0 h-full w-2 cursor-col-resize" style={{ background: "transparent" }} />
         </th>
         {/* Job Request */}
-        <th className="bg-[#F7F8FA] border border-[#E3E5E8] px-3 py-2 text-xs font-bold text-[#3B3F4C] text-left relative" style={{ width: colWidths[1], minWidth: 60 }}>
-          <span className="flex items-center">Job Request</span>
-          <div onMouseDown={(e) => handleResizeMouseDown(e, 1)} className="absolute right-0 top-0 h-full w-2 cursor-col-resize" style={{ background: "transparent" }} />
+        <th
+          className="bg-[#F7F8FA] border border-[#E3E5E8] px-3 py-2 text-xs font-bold text-[#3B3F4C] text-left relative"
+          style={{ width: colWidths[1], minWidth: 60 }}
+        >
+          <span className="flex items-center justify-between w-full">
+            <span className="flex items-center">
+              <img src={briefcaseIcon} alt="briefcase" className="w-4 h-4 mr-2" />
+              Job Request
+            </span>
+            <img src={chevronIcon} alt="chevron" className="w-3 h-3 ml-2 self-center" />
+          </span>
+          <div
+            onMouseDown={(e) => handleResizeMouseDown(e, 1)}
+            className="absolute right-0 top-0 h-full w-2 cursor-col-resize"
+            style={{ background: "transparent" }}
+          />
         </th>
         {/* Submitted */}
         <th className="bg-[#F7F8FA] border border-[#E3E5E8] px-3 py-2 text-xs font-bold text-[#3B3F4C] text-left relative" style={{ width: colWidths[2], minWidth: 60 }}>
-          <span className="flex items-center">Submitted</span>
+          <span className="flex items-center justify-between w-full">
+            <span className="flex items-center">
+              <img src={calendarIcon} alt="calendar" className="w-4 h-4 mr-2" />
+              Submitted
+            </span>
+            <img src={chevronIcon} alt="chevron" className="w-3 h-3 ml-2 self-center" />
+          </span>
           <div onMouseDown={(e) => handleResizeMouseDown(e, 2)} className="absolute right-0 top-0 h-full w-2 cursor-col-resize" style={{ background: "transparent" }} />
         </th>
         {/* Status */}
         <th className="bg-[#F7F8FA] border border-[#E3E5E8] px-3 py-2 text-xs font-bold text-[#3B3F4C] text-left relative" style={{ width: colWidths[3], minWidth: 60 }}>
-          <span className="flex items-center">Status</span>
+          <span className="flex items-center justify-between w-full">
+            <span className="flex items-center">
+              <img src={chevronCircleIcon} alt="chevron-circle" className="w-4 h-4 mr-2" />
+              Status
+            </span>
+            <img src={chevronIcon} alt="chevron" className="w-3 h-3 ml-2 self-center" />
+          </span>
           <div onMouseDown={(e) => handleResizeMouseDown(e, 3)} className="absolute right-0 top-0 h-full w-2 cursor-col-resize" style={{ background: "transparent" }} />
         </th>
         {/* Submitter */}
-        <th className="bg-[#F7F8FA] border border-[#E3E5E8] px-3 py-2 text-xs font-bold text-[#3B3F4C] text-left relative" style={{ width: colWidths[4], minWidth: 60 }}>
-          <span className="flex items-center">Submitter</span>
-          <div onMouseDown={(e) => handleResizeMouseDown(e, 4)} className="absolute right-0 top-0 h-full w-2 cursor-col-resize" style={{ background: "transparent" }} />
-        </th>
+       <th
+  className="bg-[#F7F8FA] border border-[#E3E5E8] px-3 py-2 text-xs font-bold text-[#3B3F4C] text-left relative"
+  style={{ width: colWidths[4], minWidth: 60 }}
+>
+  <div className="flex items-center justify-between w-full">
+    {/* Left content */}
+    <span className="flex items-center">
+      <img src={personIcon} alt="person" className="w-4 h-4 mr-2" />
+      Submitter
+    </span>
+
+    {/* Chevron icon on right */}
+    <img
+      src={chevronIcon}
+      alt="chevron"
+      className="w-3 h-3 ml-2 self-center"
+    />
+  </div>
+
+  {/* Resize handle */}
+  <div
+    onMouseDown={(e) => handleResizeMouseDown(e, 4)}
+    className="absolute right-0 top-0 h-full w-2 cursor-col-resize"
+    style={{ background: "transparent" }}
+  />
+</th>
         {/* URL */}
         <th className="bg-[#F7F8FA] border border-[#E3E5E8] px-3 py-2 text-xs font-bold text-[#3B3F4C] text-left relative" style={{ width: colWidths[5], minWidth: 60 }}>
-          <span className="flex items-center">URL</span>
+          <span className="flex items-center justify-between w-full">
+            <span className="flex items-center">
+              <img src={globeIcon} alt="globe" className="w-4 h-4 mr-2" />
+              URL
+            </span>
+            <img src={chevronIcon} alt="chevron" className="w-3 h-3 ml-2 self-center" />
+          </span>
           <div onMouseDown={(e) => handleResizeMouseDown(e, 5)} className="absolute right-0 top-0 h-full w-2 cursor-col-resize" style={{ background: "transparent" }} />
         </th>
         {/* Assigned (ABC) */}
         <th className="bg-[#E6F0EA] border border-[#E3E5E8] px-3 py-2 text-xs font-bold text-[#2B4A3D] text-left relative" style={{ width: colWidths[6], minWidth: 60 }}>
-          <span className="flex items-center">Assigned</span>
+          <span className="flex items-center">
+            <img src={emojiIcon} alt="emoji" className="w-4 h-4 mr-2" />
+            Assigned
+          </span>
           <div onMouseDown={(e) => handleResizeMouseDown(e, 6)} className="absolute right-0 top-0 h-full w-2 cursor-col-resize" style={{ background: "transparent" }} />
         </th>
         {/* Priority (Answer a question) */}
-        <th className="bg-[#EAE6F7] border border-[#E3E5E8] px-3 py-2 text-xs font-bold text-[#3B2F4C] text-left relative" style={{ width: colWidths[7], minWidth: 60 }}>
-          <span className="flex items-center">Priority</span>
+        <th className="bg-[#EAE6F7] border border-[#E3E5E8] px-3 py-2 text-xs font-bold text-[#3B3F4C] text-left relative" style={{ width: colWidths[7], minWidth: 60 }}>
+          <span className="flex items-center">
+            Priority
+          </span>
           <div onMouseDown={(e) => handleResizeMouseDown(e, 7)} className="absolute right-0 top-0 h-full w-2 cursor-col-resize" style={{ background: "transparent" }} />
         </th>
         {/* Due Date (Answer a question) */}
