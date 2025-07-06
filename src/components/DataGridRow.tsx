@@ -49,7 +49,8 @@ const DataGridRow: React.FC<DataGridRowProps> = ({
             tabIndex={-1}
             key={colIndex}
             className={`border border-gray-200 px-3 py-2 h-10 text-center ${
-              selectedCell?.row === rowIndex && selectedCell?.column === colIndex
+              selectedCell?.row === rowIndex &&
+              selectedCell?.column === colIndex
                 ? "bg-blue-100 ring-2 ring-blue-500"
                 : ""
             }`}
