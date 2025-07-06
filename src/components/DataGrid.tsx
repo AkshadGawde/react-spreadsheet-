@@ -152,7 +152,7 @@ const DataGrid: React.FC = () => {
 
   return (
     <div
-      className="flex flex-col h-full bg-white rounded-2xl shadow-lg border border-gray-200 p-4 min-w-[1200px] max-w-full overflow-x-auto"
+      className=""
       tabIndex={0}
       onKeyDown={handleGridKeyDown}
       style={{ outline: "none" }}
