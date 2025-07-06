@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 
 export interface DataGridCellProps {
   value?: any;
@@ -8,6 +8,8 @@ export interface DataGridCellProps {
   onClick?: () => void;
   onDoubleClick?: () => void;
   refEl?: (el: HTMLTableCellElement | null) => void;
+  isEditing?: boolean;
+  onValueChange?: (newValue: string) => void;
 }
 
 const DataGridCell: React.FC<DataGridCellProps> = ({
@@ -18,7 +20,28 @@ const DataGridCell: React.FC<DataGridCellProps> = ({
   onClick,
   onDoubleClick,
   refEl,
+  isEditing = false,
+  onValueChange,
 }) => {
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (isEditing && inputRef.current) {
+      inputRef.current.focus();
+      inputRef.current.select();
+    }
+  }, [isEditing]);
+
+  const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      onValueChange?.(e.currentTarget.value);
+    }
+  };
+
+  const handleInputBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    onValueChange?.(e.currentTarget.value);
+  };
+
   return (
     <td
       ref={refEl}
@@ -28,7 +51,17 @@ const DataGridCell: React.FC<DataGridCellProps> = ({
       onClick={onClick}
       onDoubleClick={onDoubleClick}
     >
-      {value}
+      {isEditing ? (
+        <input
+          ref={inputRef}
+          className="w-full h-full px-2 py-1 border border-blue-400 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+          defaultValue={value}
+          onKeyDown={handleInputKeyDown}
+          onBlur={handleInputBlur}
+        />
+      ) : (
+        value
+      )}
     </td>
   );
 };

@@ -15,6 +15,8 @@ interface DataGridRowProps {
   handleStatusClick?: (rowId: number, currentStatus: string) => void;
   handlePriorityClick?: (rowId: number, currentPriority: string) => void;
   handleUrlClick?: (url: string) => void;
+  editingCell?: { row: number; column: number } | null;
+  onCellValueChange?: (row: number, column: number, newValue: string) => void;
 }
 
 const DataGridRow: React.FC<DataGridRowProps> = ({
@@ -31,6 +33,8 @@ const DataGridRow: React.FC<DataGridRowProps> = ({
   handleStatusClick,
   handlePriorityClick,
   handleUrlClick,
+  editingCell,
+  onCellValueChange,
 }) => {
   // Render empty row if row is empty (for spreadsheet feel)
   if (!row || Object.keys(row).length === 0) {
@@ -80,6 +84,10 @@ const DataGridRow: React.FC<DataGridRowProps> = ({
         onClick={() => handleCellClick(rowIndex, 0)}
         onDoubleClick={() => handleCellDoubleClick(rowIndex, 0)}
         value={row.id}
+        isEditing={editingCell?.row === rowIndex && editingCell?.column === 0}
+        onValueChange={(val) =>
+          onCellValueChange && onCellValueChange(rowIndex, 0, val)
+        }
       />
       {/* Job Request */}
       <DataGridCell
@@ -96,6 +104,10 @@ const DataGridRow: React.FC<DataGridRowProps> = ({
         onClick={() => handleCellClick(rowIndex, 1)}
         onDoubleClick={() => handleCellDoubleClick(rowIndex, 1)}
         value={row.jobRequest}
+        isEditing={editingCell?.row === rowIndex && editingCell?.column === 1}
+        onValueChange={(val) =>
+          onCellValueChange && onCellValueChange(rowIndex, 1, val)
+        }
       />
       {/* Submitted */}
       <DataGridCell
@@ -112,6 +124,10 @@ const DataGridRow: React.FC<DataGridRowProps> = ({
         onClick={() => handleCellClick(rowIndex, 2)}
         onDoubleClick={() => handleCellDoubleClick(rowIndex, 2)}
         value={row.submitted}
+        isEditing={editingCell?.row === rowIndex && editingCell?.column === 2}
+        onValueChange={(val) =>
+          onCellValueChange && onCellValueChange(rowIndex, 2, val)
+        }
       />
       {/* Status */}
       <td
@@ -132,7 +148,7 @@ const DataGridRow: React.FC<DataGridRowProps> = ({
           <button
             onClick={() => handleStatusClick(row.id, row.status)}
             className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusBadge(
-              row.status
+              row.status,
             )}`}
           >
             {row.status}
@@ -153,6 +169,10 @@ const DataGridRow: React.FC<DataGridRowProps> = ({
         onClick={() => handleCellClick(rowIndex, 4)}
         onDoubleClick={() => handleCellDoubleClick(rowIndex, 4)}
         value={row.submitter}
+        isEditing={editingCell?.row === rowIndex && editingCell?.column === 4}
+        onValueChange={(val) =>
+          onCellValueChange && onCellValueChange(rowIndex, 4, val)
+        }
       />
       {/* URL */}
       <td
@@ -193,6 +213,10 @@ const DataGridRow: React.FC<DataGridRowProps> = ({
         onClick={() => handleCellClick(rowIndex, 6)}
         onDoubleClick={() => handleCellDoubleClick(rowIndex, 6)}
         value={row.assigned}
+        isEditing={editingCell?.row === rowIndex && editingCell?.column === 6}
+        onValueChange={(val) =>
+          onCellValueChange && onCellValueChange(rowIndex, 6, val)
+        }
       />
       {/* Priority */}
       <td
@@ -233,6 +257,10 @@ const DataGridRow: React.FC<DataGridRowProps> = ({
         onClick={() => handleCellClick(rowIndex, 8)}
         onDoubleClick={() => handleCellDoubleClick(rowIndex, 8)}
         value={row.dueDate}
+        isEditing={editingCell?.row === rowIndex && editingCell?.column === 8}
+        onValueChange={(val) =>
+          onCellValueChange && onCellValueChange(rowIndex, 8, val)
+        }
       />
       {/* Est. Value */}
       <td

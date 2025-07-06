@@ -14,6 +14,8 @@ interface DataGridBodyProps {
   handleStatusClick: (rowId: number, currentStatus: string) => void;
   handlePriorityClick: (rowId: number, currentPriority: string) => void;
   handleUrlClick: (url: string) => void;
+  editingCell?: { row: number; column: number } | null;
+  onCellValueChange?: (row: number, column: number, newValue: string) => void;
 }
 
 const DataGridBody: React.FC<DataGridBodyProps> = ({
@@ -29,6 +31,8 @@ const DataGridBody: React.FC<DataGridBodyProps> = ({
   handleStatusClick,
   handlePriorityClick,
   handleUrlClick,
+  editingCell,
+  onCellValueChange,
 }) => {
   return (
     <tbody className="bg-white">
@@ -48,6 +52,8 @@ const DataGridBody: React.FC<DataGridBodyProps> = ({
           handleStatusClick={handleStatusClick}
           handlePriorityClick={handlePriorityClick}
           handleUrlClick={handleUrlClick}
+          editingCell={editingCell}
+          onCellValueChange={onCellValueChange}
         />
       ))}
       {/* Empty rows for spreadsheet feel */}

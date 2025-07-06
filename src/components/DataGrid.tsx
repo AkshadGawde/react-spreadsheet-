@@ -5,9 +5,9 @@ import DataGridHeader from "./DataGridHeader";
 import DataGridBody from "./DataGridBody";
 
 const DataGrid: React.FC = () => {
-  const [data] = useState<SpreadsheetRow[]>(sampleData);
+  const [data, setData] = useState<SpreadsheetRow[]>(sampleData);
   const [selectedCell, setSelectedCell] = useState<SelectedCell | null>(null);
-  // const [editingCell, setEditingCell] = useState<SelectedCell | null>(null);
+  const [editingCell, setEditingCell] = useState<SelectedCell | null>(null);
 
   // Column resizing state
   const [colWidths, setColWidths] = useState<number[]>([
@@ -77,38 +77,75 @@ const DataGrid: React.FC = () => {
       }
     }
   }, [selectedCell]);
+
+  // --- ENHANCED KEYBOARD HANDLER ---
   const handleGridKeyDown = useCallback(
     (e: React.KeyboardEvent<HTMLDivElement>) => {
       if (!selectedCell) return;
       let { row, column } = selectedCell;
+      if (editingCell) {
+        // Let input handle Enter, Esc, etc.
+        return;
+      }
+      if (e.key === "Enter") {
+        setEditingCell(selectedCell);
+        e.preventDefault();
+        return;
+      }
       if (e.key === "ArrowDown") row = Math.min(row + 1, totalRows - 1);
       else if (e.key === "ArrowUp") row = Math.max(row - 1, 0);
       else if (e.key === "ArrowRight") {
-        do { column = Math.min(column + 1, totalCols - 1); } while (columns[column]?.unselectable && column < totalCols - 1);
-      }
-      else if (e.key === "ArrowLeft") {
-        do { column = Math.max(column - 1, 0); } while (columns[column]?.unselectable && column > 0);
-      }
-      else return;
+        do {
+          column = Math.min(column + 1, totalCols - 1);
+        } while (columns[column]?.unselectable && column < totalCols - 1);
+      } else if (e.key === "ArrowLeft") {
+        do {
+          column = Math.max(column - 1, 0);
+        } while (columns[column]?.unselectable && column > 0);
+      } else return;
       if (columns[column]?.unselectable) return;
       e.preventDefault();
       setSelectedCell({ row, column });
     },
-    [selectedCell, totalRows, totalCols, columns],
+    [selectedCell, totalRows, totalCols, columns, editingCell],
   );
-  // --- ARROW KEYBOARD NAVIGATION LOGIC END ---
 
-  const handleCellClick = useCallback((row: number, column: number) => {
-    if (columns[column]?.unselectable) return;
-    setSelectedCell({ row, column });
-    console.log(`Cell clicked: row ${row}, column ${column}`);
-  }, [columns]);
+  const handleCellClick = useCallback(
+    (row: number, column: number) => {
+      if (columns[column]?.unselectable) return;
+      setSelectedCell({ row, column });
+      setEditingCell(null);
+    },
+    [columns],
+  );
 
-  const handleCellDoubleClick = useCallback((row: number, column: number) => {
-    if (columns[column]?.unselectable) return;
-    // setEditingCell({ row, column });
-    console.log(`Cell editing: row ${row}, column ${column}`);
-  }, [columns]);
+  const handleCellDoubleClick = useCallback(
+    (row: number, column: number) => {
+      if (columns[column]?.unselectable) return;
+      setEditingCell({ row, column });
+    },
+    [columns],
+  );
+
+  // Save cell value and exit edit mode
+  const handleCellValueChange = (
+    row: number,
+    column: number,
+    newValue: string,
+  ) => {
+    if (
+      row < data.length &&
+      columns[column]?.key &&
+      columns[column]?.key !== "index"
+    ) {
+      setData((prev) => {
+        const updated = [...prev];
+        updated[row] = { ...updated[row], [columns[column].key]: newValue };
+        return updated;
+      });
+    }
+    setEditingCell(null);
+  };
 
   const getStatusBadge = (status: string) => {
     switch (status) {
@@ -179,6 +216,8 @@ const DataGrid: React.FC = () => {
             handleStatusClick={handleStatusClick}
             handlePriorityClick={handlePriorityClick}
             handleUrlClick={handleUrlClick}
+            editingCell={editingCell}
+            onCellValueChange={handleCellValueChange}
           />
         </table>
       </div>
