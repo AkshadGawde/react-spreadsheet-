@@ -11,7 +11,7 @@ const DataGrid: React.FC = () => {
 
   // Column resizing state
   const [colWidths, setColWidths] = useState<number[]>([
-    80, 300, 120, 120, 140, 160, 140, 100, 120, 120,
+    48, 300, 120, 120, 140, 160, 140, 100, 120, 120,
   ]);
   const resizingCol = useRef<number | null>(null);
   const startX = useRef<number>(0);
@@ -19,7 +19,7 @@ const DataGrid: React.FC = () => {
 
   // --- ARROW KEYBOARD NAVIGATION LOGIC START ---
   const columns = [
-    { key: "index", label: "#", width: "60px" },
+    { key: "index", label: "#", width: "48px", unselectable: true },
     { key: "jobRequest", label: "Job Request", width: "300px" },
     { key: "submitted", label: "Submitted", width: "120px" },
     { key: "status", label: "Status", width: "120px" },
@@ -83,26 +83,32 @@ const DataGrid: React.FC = () => {
       let { row, column } = selectedCell;
       if (e.key === "ArrowDown") row = Math.min(row + 1, totalRows - 1);
       else if (e.key === "ArrowUp") row = Math.max(row - 1, 0);
-      else if (e.key === "ArrowRight")
-        column = Math.min(column + 1, totalCols - 1);
-      else if (e.key === "ArrowLeft") column = Math.max(column - 1, 0);
+      else if (e.key === "ArrowRight") {
+        do { column = Math.min(column + 1, totalCols - 1); } while (columns[column]?.unselectable && column < totalCols - 1);
+      }
+      else if (e.key === "ArrowLeft") {
+        do { column = Math.max(column - 1, 0); } while (columns[column]?.unselectable && column > 0);
+      }
       else return;
+      if (columns[column]?.unselectable) return;
       e.preventDefault();
       setSelectedCell({ row, column });
     },
-    [selectedCell, totalRows, totalCols],
+    [selectedCell, totalRows, totalCols, columns],
   );
   // --- ARROW KEYBOARD NAVIGATION LOGIC END ---
 
   const handleCellClick = useCallback((row: number, column: number) => {
+    if (columns[column]?.unselectable) return;
     setSelectedCell({ row, column });
     console.log(`Cell clicked: row ${row}, column ${column}`);
-  }, []);
+  }, [columns]);
 
   const handleCellDoubleClick = useCallback((row: number, column: number) => {
+    if (columns[column]?.unselectable) return;
     // setEditingCell({ row, column });
     console.log(`Cell editing: row ${row}, column ${column}`);
-  }, []);
+  }, [columns]);
 
   const getStatusBadge = (status: string) => {
     switch (status) {
@@ -146,14 +152,14 @@ const DataGrid: React.FC = () => {
 
   return (
     <div
-      className="flex flex-col h-full bg-white"
+      className="flex flex-col h-full bg-white rounded-2xl shadow-lg border border-gray-200 p-4 min-w-[1200px] max-w-full overflow-x-auto"
       tabIndex={0}
       onKeyDown={handleGridKeyDown}
       style={{ outline: "none" }}
     >
       {/* Spreadsheet container */}
       <div className="flex-1 overflow-auto">
-        <table className="w-full">
+        <table className="w-full border-separate border-spacing-0 min-w-[1200px] bg-white rounded-xl shadow-sm">
           {/* Header */}
           <DataGridHeader
             colWidths={colWidths}
