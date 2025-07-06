@@ -48,13 +48,13 @@ const DataGridRow: React.FC<DataGridRowProps> = ({
             }}
             tabIndex={-1}
             key={colIndex}
-            className={`border border-gray-200 px-3 py-2 h-10 text-center ${
+            className={`border border-gray-100 p-0 h-7 min-h-0 w-6 max-w-8 text-[10px] text-center ${
               selectedCell?.row === rowIndex &&
               selectedCell?.column === colIndex
                 ? "bg-blue-100 ring-2 ring-blue-500"
                 : ""
             }`}
-            style={{ width: colWidths[colIndex], minWidth: 60 }}
+            style={{ width: 24, minWidth: 20, maxWidth: 32 }}
             onClick={() => handleCellClick(rowIndex, colIndex)}
             onDoubleClick={() => handleCellDoubleClick(rowIndex, colIndex)}
           >
@@ -62,7 +62,7 @@ const DataGridRow: React.FC<DataGridRowProps> = ({
           </td>
         ))}
         {/* Extra empty cell for '+' column */}
-        <td className="border border-gray-200 px-3 py-2 h-10"></td>
+        <td className="border border-gray-100 p-2 h-7 min-h-0"></td>
       </tr>
     );
   }
@@ -76,12 +76,12 @@ const DataGridRow: React.FC<DataGridRowProps> = ({
           cellRefs.current[rowIndex][0] = el;
         }}
         tabIndex={-1}
-        className={`border border-gray-200 px-3 py-2 text-sm text-center text-gray-900 ${
+        className={`border border-gray-100 p-0 h-6 min-h-0 w-6 max-w-8 text-[10px] text-center text-gray-900 ${
           selectedCell?.row === rowIndex && selectedCell?.column === 0
             ? "bg-blue-100 ring-2 ring-blue-500"
             : ""
         }`}
-        style={{ width: colWidths[0], minWidth: 60 }}
+        style={{ width: 24, minWidth: 20, maxWidth: 32 }}
         onClick={() => handleCellClick(rowIndex, 0)}
         onDoubleClick={() => handleCellDoubleClick(rowIndex, 0)}
         value={row.id}
@@ -96,7 +96,7 @@ const DataGridRow: React.FC<DataGridRowProps> = ({
           cellRefs.current[rowIndex][1] = el;
         }}
         tabIndex={-1}
-        className={`border border-gray-200 px-3 py-2 text-sm text-gray-900 ${
+        className={`border border-gray-100 p-2 h-7 min-h-0 text-xs text-gray-900 ${
           selectedCell?.row === rowIndex && selectedCell?.column === 1
             ? "bg-blue-100 ring-2 ring-blue-500"
             : ""
@@ -116,7 +116,7 @@ const DataGridRow: React.FC<DataGridRowProps> = ({
           cellRefs.current[rowIndex][2] = el;
         }}
         tabIndex={-1}
-        className={`border border-gray-200 px-3 py-2 text-right text-sm text-gray-900 ${
+        className={`border border-gray-100 p-2 h-7 min-h-0 text-xs text-right text-gray-900 ${
           selectedCell?.row === rowIndex && selectedCell?.column === 2
             ? "bg-blue-100 ring-2 ring-blue-500"
             : ""
@@ -136,7 +136,7 @@ const DataGridRow: React.FC<DataGridRowProps> = ({
           cellRefs.current[rowIndex][3] = el;
         }}
         tabIndex={-1}
-        className={`border border-gray-200 px-3 py-2 text-center text-sm ${
+        className={`border border-gray-100 p-2 h-7 min-h-0 text-center text-xs ${
           selectedCell?.row === rowIndex && selectedCell?.column === 3
             ? "bg-blue-100 ring-2 ring-blue-500"
             : ""
@@ -162,7 +162,7 @@ const DataGridRow: React.FC<DataGridRowProps> = ({
           cellRefs.current[rowIndex][4] = el;
         }}
         tabIndex={-1}
-        className={`border border-gray-200 px-3 py-2 text-left text-sm text-gray-900 ${
+        className={`border border-gray-100 p-2 h-7 min-h-0 text-xs text-left text-gray-900 ${
           selectedCell?.row === rowIndex && selectedCell?.column === 4
             ? "bg-blue-100 ring-2 ring-blue-500"
             : ""
@@ -181,7 +181,7 @@ const DataGridRow: React.FC<DataGridRowProps> = ({
           cellRefs.current[rowIndex][5] = el;
         }}
         tabIndex={-1}
-        className={`border border-gray-200 px-3 py-2 text-sm ${
+        className={`border border-gray-100 p-2 h-7 min-h-0 text-xs ${
           selectedCell?.row === rowIndex && selectedCell?.column === 5
             ? "bg-blue-100 ring-2 ring-blue-500"
             : ""
@@ -205,7 +205,7 @@ const DataGridRow: React.FC<DataGridRowProps> = ({
           cellRefs.current[rowIndex][6] = el;
         }}
         tabIndex={-1}
-        className={`border border-gray-200 px-3 py-2 text-sm text-gray-900 ${
+        className={`border border-gray-100 p-2 h-7 min-h-0 text-xs text-gray-900 ${
           selectedCell?.row === rowIndex && selectedCell?.column === 6
             ? "bg-blue-100 ring-2 ring-blue-500"
             : ""
@@ -225,7 +225,7 @@ const DataGridRow: React.FC<DataGridRowProps> = ({
           cellRefs.current[rowIndex][7] = el;
         }}
         tabIndex={-1}
-        className={`border border-gray-200 px-3 py-2 text-center text-sm ${
+        className={`border border-gray-100 p-2 h-7 min-h-0 text-center text-xs ${
           selectedCell?.row === rowIndex && selectedCell?.column === 7
             ? "bg-blue-100 ring-2 ring-blue-500"
             : ""
@@ -237,7 +237,7 @@ const DataGridRow: React.FC<DataGridRowProps> = ({
         {getPriorityBadge && handlePriorityClick ? (
           <button
             onClick={() => handlePriorityClick(row.id, row.priority)}
-            className={`text-sm ${getPriorityBadge(row.priority)}`}
+            className={`text-xs ${getPriorityBadge(row.priority)}`}
           >
             {row.priority}
           </button>
@@ -249,7 +249,7 @@ const DataGridRow: React.FC<DataGridRowProps> = ({
           cellRefs.current[rowIndex][8] = el;
         }}
         tabIndex={-1}
-        className={`border border-gray-200 px-3 py-2 text-right text-sm text-gray-900 ${
+        className={`border border-gray-100 p-2 h-7 min-h-0 text-xs text-right text-gray-900 ${
           selectedCell?.row === rowIndex && selectedCell?.column === 8
             ? "bg-blue-100 ring-2 ring-blue-500"
             : ""
@@ -269,7 +269,7 @@ const DataGridRow: React.FC<DataGridRowProps> = ({
           cellRefs.current[rowIndex][9] = el;
         }}
         tabIndex={-1}
-        className={`border border-gray-200 px-3 py-2 text-right text-sm text-gray-900 ${
+        className={`border border-gray-100 p-2 h-7 min-h-0 text-right text-xs text-gray-900 ${
           selectedCell?.row === rowIndex && selectedCell?.column === 9
             ? "bg-blue-100 ring-2 ring-blue-500"
             : ""
@@ -297,11 +297,7 @@ const DataGridRow: React.FC<DataGridRowProps> = ({
       {/* Extra empty cell for '+' column */}
       <td
         tabIndex={-1}
-        className={`border border-gray-200 px-3 py-2 text-sm text-gray-900 ${
-          selectedCell?.row === rowIndex && selectedCell?.column === 9
-            ? "bg-blue-100 ring-2 ring-blue-500"
-            : ""
-        }`}
+        className="border border-gray-100 p-2 h-7 min-h-0 text-xs text-gray-900"
       ></td>
     </tr>
   );

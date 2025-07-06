@@ -25,16 +25,15 @@ const DataGridHeader: React.FC<DataGridHeaderProps> = ({
       <tr>
         {/* # column: no header */}
         <th
-          className="px-2 py-1 text-lg  text-[#BCBCBC] bg-white border border-[#eeeeee] text-center"
-          style={{ width: 30, minWidth: 30 }}
+          className="p-0 h-6 min-h-0 w-6 max-w-8 text-[10px] text-[#BCBCBC] bg-white border border-[#eeeeee] text-center"
         ></th>
         {/* Q3 Financial Overview: spans columns 1-4 */}
         <th
           colSpan={4}
-          className="bg-[#E2E2E2] border border-[#E3E5E8] p-2 text-left text-sm font-medium text-[#3B3F4C] tracking-wide"
+          className="bg-[#E2E2E2] border border-[#E3E5E8] p-1 h-7 min-h-0 text-left text-xs font-medium text-[#3B3F4C] tracking-wide"
           style={{ minWidth: colWidths.slice(1, 5).reduce((a, b) => a + b, 0) }}
         >
-          <div className="flex items-center">
+          <div className="flex items-center h-7 min-h-0">
             {/* Blue Icon */}
             <svg
               width="16"
@@ -73,15 +72,15 @@ const DataGridHeader: React.FC<DataGridHeaderProps> = ({
         </th>
         {/* URL: no header */}
         <th
-          className="bg-white border border-[#E3E5E8] px-4 py-3"
+          className="bg-white border border-[#E3E5E8] p-1 h-7 min-h-0 px-4 text-xs"
           style={{ width: colWidths[5], minWidth: 60 }}
         ></th>
         {/* ABC: col 6 */}
         <th
-          className="bg-[#E6F0EA] border border-[#E3E5E8] px-4 py-3 text-center text-sm font-medium text-[#2B4A3D] tracking-wide"
+          className="bg-[#E6F0EA] border border-[#E3E5E8] p-1 h-7 min-h-0 px-4 text-center text-xs font-medium text-[#2B4A3D] tracking-wide"
           style={{ width: colWidths[6], minWidth: 60 }}
         >
-          <div className="flex items-center justify-center">
+          <div className="flex items-center justify-center h-7 min-h-0">
             <svg
               width="17"
               height="16"
@@ -107,10 +106,10 @@ const DataGridHeader: React.FC<DataGridHeaderProps> = ({
         {/* Answer a question: cols 7-8 */}
         <th
           colSpan={2}
-          className="bg-[#EAE6F7] border border-[#E3E5E8] px-3 py-2 text-center text-sm font-semibold text-[#3B2F4C] tracking-wide"
+          className="bg-[#EAE6F7] border border-[#E3E5E8] p-1 h-7 min-h-0 px-3 text-center text-xs font-semibold text-[#3B2F4C] tracking-wide"
           style={{ width: colWidths[7] + colWidths[8], minWidth: 120 }}
         >
-          <span className="inline-flex items-center">
+          <span className="inline-flex items-center h-7 min-h-0">
             <svg
               width="17"
               height="16"
@@ -135,10 +134,10 @@ const DataGridHeader: React.FC<DataGridHeaderProps> = ({
         </th>
         {/* Extract: col 9 */}
         <th
-          className="bg-[#F7EAE6] border border-[#E3E5E8] px-3 py-2 text-center text-sm font-semibold text-[#4C2B2B] tracking-wide"
+          className="bg-[#F7EAE6] border border-[#E3E5E8] p-1 h-7 min-h-0 px-3 text-center text-xs font-semibold text-[#4C2B2B] tracking-wide"
           style={{ width: colWidths[9], minWidth: 60 }}
         >
-          <span className="inline-flex items-center">
+          <span className="inline-flex items-center h-7 min-h-0">
             <svg
               width="17"
               height="16"
@@ -165,10 +164,10 @@ const DataGridHeader: React.FC<DataGridHeaderProps> = ({
         </th>
         {/* +: col 10 */}
         <th
-          className="bg-[#E3E5E8] border border-[#E3E5E8] px-3 py-2 text-center text-xs font-semibold text-[#8C6C62] tracking-wide"
+          className="bg-[#E3E5E8] border border-[#E3E5E8] p-1 h-7 min-h-0 px-3 text-center text-xs font-semibold text-[#8C6C62] tracking-wide"
           style={{ width: 60, minWidth: 60 }}
         >
-          <span className="inline-flex items-center">
+          <span className="inline-flex items-center h-7 min-h-0">
             <svg
               width="20"
               height="20"
@@ -188,22 +187,21 @@ const DataGridHeader: React.FC<DataGridHeaderProps> = ({
       <tr>
         {/* # column */}
         <th
-          className="bg-[#F7F8FA] border border-[#E3E5E8] px-3 py-2 text-xs font-bold text-[#3B3F4C] relative text-center"
-          style={{ width: colWidths[0], minWidth: 60 }}
+          className="bg-[#F7F8FA] border border-[#E3E5E8] p-0 h-6 min-h-0 w-6 max-w-8 text-[10px] font-bold text-[#3B3F4C] relative text-center"
         >
           #
           <div
             onMouseDown={(e) => handleResizeMouseDown(e, 0)}
-            className="absolute right-0 top-0 h-full w-2 cursor-col-resize"
+            className="absolute right-0 top-2 h-full w-2 cursor-col-resize"
             style={{ background: "transparent" }}
           />
         </th>
         {/* Job Request */}
         <th
-          className="bg-[#F7F8FA] border border-[#E3E5E8] px-3 py-2 text-xs font-bold text-[#3B3F4C] text-left relative"
+          className="bg-[#F7F8FA] border border-[#E3E5E8] p-1 h-7 min-h-0 px-3 text-xs font-bold text-[#3B3F4C] text-left relative"
           style={{ width: colWidths[1], minWidth: 60 }}
         >
-          <span className="flex items-center justify-between w-full">
+          <span className="flex items-center justify-between w-full h-7 min-h-0">
             <span className="flex items-center">
               <img
                 src={briefcaseIcon}
@@ -220,16 +218,16 @@ const DataGridHeader: React.FC<DataGridHeaderProps> = ({
           </span>
           <div
             onMouseDown={(e) => handleResizeMouseDown(e, 1)}
-            className="absolute right-0 top-0 h-full w-2 cursor-col-resize"
+            className="absolute right-0 top-2 h-full w-2 cursor-col-resize"
             style={{ background: "transparent" }}
           />
         </th>
         {/* Submitted */}
         <th
-          className="bg-[#F7F8FA] border border-[#E3E5E8] px-3 py-2 text-xs font-bold text-[#3B3F4C] text-left relative"
+          className="bg-[#F7F8FA] border border-[#E3E5E8] p-1 h-7 min-h-0 px-3 text-xs font-bold text-[#3B3F4C] text-left relative"
           style={{ width: colWidths[2], minWidth: 60 }}
         >
-          <span className="flex items-center justify-between w-full">
+          <span className="flex items-center justify-between w-full h-7 min-h-0">
             <span className="flex items-center">
               <img src={calendarIcon} alt="calendar" className="w-4 h-4 mr-2" />
               Submitted
@@ -242,16 +240,16 @@ const DataGridHeader: React.FC<DataGridHeaderProps> = ({
           </span>
           <div
             onMouseDown={(e) => handleResizeMouseDown(e, 2)}
-            className="absolute right-0 top-0 h-full w-2 cursor-col-resize"
+            className="absolute right-0 top-2 h-full w-2 cursor-col-resize"
             style={{ background: "transparent" }}
           />
         </th>
         {/* Status */}
         <th
-          className="bg-[#F7F8FA] border border-[#E3E5E8] px-3 py-2 text-xs font-bold text-[#3B3F4C] text-left relative"
+          className="bg-[#F7F8FA] border border-[#E3E5E8] p-1 h-7 min-h-0 px-3 text-xs font-bold text-[#3B3F4C] text-left relative"
           style={{ width: colWidths[3], minWidth: 60 }}
         >
-          <span className="flex items-center justify-between w-full">
+          <span className="flex items-center justify-between w-full h-7 min-h-0">
             <span className="flex items-center">
               <img
                 src={chevronCircleIcon}
@@ -268,16 +266,16 @@ const DataGridHeader: React.FC<DataGridHeaderProps> = ({
           </span>
           <div
             onMouseDown={(e) => handleResizeMouseDown(e, 3)}
-            className="absolute right-0 top-0 h-full w-2 cursor-col-resize"
+            className="absolute right-0 top-2 h-full w-2 cursor-col-resize"
             style={{ background: "transparent" }}
           />
         </th>
         {/* Submitter */}
         <th
-          className="bg-[#F7F8FA] border border-[#E3E5E8] px-3 py-2 text-xs font-bold text-[#3B3F4C] text-left relative"
+          className="bg-[#F7F8FA] border border-[#E3E5E8] p-1 h-7 min-h-0 px-3 text-xs font-bold text-[#3B3F4C] text-left relative"
           style={{ width: colWidths[4], minWidth: 60 }}
         >
-          <div className="flex items-center justify-between w-full">
+          <div className="flex items-center justify-between w-full h-7 min-h-0">
             {/* Left content */}
             <span className="flex items-center">
               <img src={personIcon} alt="person" className="w-4 h-4 mr-2" />
@@ -295,16 +293,16 @@ const DataGridHeader: React.FC<DataGridHeaderProps> = ({
           {/* Resize handle */}
           <div
             onMouseDown={(e) => handleResizeMouseDown(e, 4)}
-            className="absolute right-0 top-0 h-full w-2 cursor-col-resize"
+            className="absolute right-0 top-2 h-full w-2 cursor-col-resize"
             style={{ background: "transparent" }}
           />
         </th>
         {/* URL */}
         <th
-          className="bg-[#F7F8FA] border border-[#E3E5E8] px-3 py-2 text-xs font-bold text-[#3B3F4C] text-left relative"
+          className="bg-[#F7F8FA] border border-[#E3E5E8] p-1 h-7 min-h-0 px-3 text-xs font-bold text-[#3B3F4C] text-left relative"
           style={{ width: colWidths[5], minWidth: 60 }}
         >
-          <span className="flex items-center justify-between w-full">
+          <span className="flex items-center justify-between w-full h-7 min-h-0">
             <span className="flex items-center">
               <img src={globeIcon} alt="globe" className="w-4 h-4 mr-2" />
               URL
@@ -317,67 +315,67 @@ const DataGridHeader: React.FC<DataGridHeaderProps> = ({
           </span>
           <div
             onMouseDown={(e) => handleResizeMouseDown(e, 5)}
-            className="absolute right-0 top-0 h-full w-2 cursor-col-resize"
+            className="absolute right-0 top-2 h-full w-2 cursor-col-resize"
             style={{ background: "transparent" }}
           />
         </th>
         {/* Assigned (ABC) */}
         <th
-          className="bg-[#E6F0EA] border border-[#E3E5E8] px-3 py-2 text-xs font-bold text-[#2B4A3D] text-left relative"
+          className="bg-[#E6F0EA] border border-[#E3E5E8] p-1 h-7 min-h-0 px-3 text-xs font-bold text-[#2B4A3D] text-left relative"
           style={{ width: colWidths[6], minWidth: 60 }}
         >
-          <span className="flex items-center">
+          <span className="flex items-center h-7 min-h-0">
             <img src={emojiIcon} alt="emoji" className="w-4 h-4 mr-2" />
             Assigned
           </span>
           <div
             onMouseDown={(e) => handleResizeMouseDown(e, 6)}
-            className="absolute right-0 top-0 h-full w-2 cursor-col-resize"
+            className="absolute right-0 top-2 h-full w-2 cursor-col-resize"
             style={{ background: "transparent" }}
           />
         </th>
         {/* Priority (Answer a question) */}
         <th
-          className="bg-[#EAE6F7] border border-[#E3E5E8] px-3 py-2 text-xs font-bold text-[#3B3F4C] text-left relative"
+          className="bg-[#EAE6F7] border border-[#E3E5E8] p-1 h-7 min-h-0 px-3 text-xs font-bold text-[#3B3F4C] text-left relative"
           style={{ width: colWidths[7], minWidth: 60 }}
         >
-          <span className="flex items-center">Priority</span>
+          <span className="flex items-center h-7 min-h-0">Priority</span>
           <div
             onMouseDown={(e) => handleResizeMouseDown(e, 7)}
-            className="absolute right-0 top-0 h-full w-2 cursor-col-resize"
+            className="absolute right-0 top-2 h-full w-2 cursor-col-resize"
             style={{ background: "transparent" }}
           />
         </th>
         {/* Due Date (Answer a question) */}
         <th
-          className="bg-[#EAE6F7] border border-[#E3E5E8] px-3 py-2 text-xs font-bold text-[#3B2F4C] text-left relative"
+          className="bg-[#EAE6F7] border border-[#E3E5E8] p-1 h-7 min-h-0 px-3 text-xs font-bold text-[#3B3F4C] text-left relative"
           style={{ width: colWidths[8], minWidth: 60 }}
         >
-          <span className="flex items-center">Due date</span>
+          <span className="flex items-center h-7 min-h-0">Due date</span>
           <div
             onMouseDown={(e) => handleResizeMouseDown(e, 8)}
-            className="absolute right-0 top-0 h-full w-2 cursor-col-resize"
+            className="absolute right-0 top-2 h-full w-2 cursor-col-resize"
             style={{ background: "transparent" }}
           />
         </th>
         {/* Est. Value (Extract) */}
         <th
-          className="bg-[#F7EAE6] border border-[#E3E5E8] px-3 py-2 text-xs font-bold text-[#4C2B2B] text-left relative"
+          className="bg-[#F7EAE6] border border-[#E3E5E8] p-1 h-7 min-h-0 px-3 text-xs font-bold text-[#4C2B2B] text-left relative"
           style={{ width: colWidths[9], minWidth: 60 }}
         >
-          <span className="flex items-center">Est. Value</span>
+          <span className="flex items-center h-7 min-h-0">Est. Value</span>
           <div
             onMouseDown={(e) => handleResizeMouseDown(e, 9)}
-            className="absolute right-0 top-0 h-full w-2 cursor-col-resize"
+            className="absolute right-0 top-2 h-full w-2 cursor-col-resize"
             style={{ background: "transparent" }}
           />
         </th>
         {/* + column */}
         <th
-          className="bg-[#E3E5E8] border border-[#E3E5E8] px-3 py-2 text-xs font-bold text-[#4C2B2B] text-left relative"
+          className="bg-[#E3E5E8] border border-[#E3E5E8] p-1 h-7 min-h-0 px-3 text-xs font-bold text-[#4C2B2B] text-left relative"
           style={{ width: 60, minWidth: 60 }}
         >
-          <span className="flex items-center"></span>
+          <span className="flex items-center h-7 min-h-0"></span>
         </th>
       </tr>
     </thead>

@@ -158,7 +158,7 @@ const DataGrid: React.FC = () => {
       case "Blocked":
         return "bg-red-100 text-red-800 border border-red-200";
       default:
-        return "bg-gray-100 text-gray-800 border border-gray-200";
+        return "bg-gray-100 text-gray-800 border border-gray-100";
     }
   };
 
